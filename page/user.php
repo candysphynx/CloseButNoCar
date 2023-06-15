@@ -26,7 +26,7 @@
         <a class="navbar-brand" href="#">
         </a>
         <a class="navbar-brand" href="#">
-          <img src="./public/favico.png" width="30" height="30" alt="">
+          <img src="../public/favico.png" width="30" height="30" alt="">
         </a>
         <a class="navbar-brand" href="#">Close But No Car</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
