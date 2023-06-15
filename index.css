@@ -2,22 +2,21 @@
     background-color: #382d2a;
 }
 
-.bkgImg{
+.bkgImg {
     height: 95vh;
     background-image: url("/lebocal/Ateliers/CloseButNoCar/public/logoT.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.colorWhite{
-    color:white;
+.colorWhite {
+    color: white;
 }
 
-.activeGradient{
-    background: -webkit-linear-gradient(45deg, yellow, red);
+.activeGradient {
+    background: -webkit-linear-gradient(45deg, #ff656e, #f8c270);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 16px; 
+    font-size: 16px;
 }
 
 /*Polices Raleway*/
