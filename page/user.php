@@ -35,13 +35,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav px-3">
-            <li class="nav-item active activeGradient">
-              <a class="nav-link" href="#">Enchères <span class="sr-only">(ici)</span></a>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Enchères <span class="sr-only">(ici)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="#">Enchères Terminées</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active activeGradient">
               <a class="nav-link active" href="#">Mon Profil</a>
             </li>
             <li class="nav-item">
