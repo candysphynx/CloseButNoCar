@@ -1,18 +1,22 @@
 .bkgBrown {
     background-color: #382d2a;
 }
-.bkgImg{
+
+.bkgImg {
     opacity: 20%;
     height: 95vh;
     background-image: url("/lebocal/Ateliers/CloseButNoCar/public/logo1.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
-.colorWhite{
-    color:white;
+
+.colorWhite {
+    color: white;
 }
-.activeGradient{
+
+.activeGradient {
     background: -webkit-linear-gradient(45deg, yellow, red);
     -webkit-background-clip: text;
     font-size: 16px;
+    background-clip: border-box;
 }
