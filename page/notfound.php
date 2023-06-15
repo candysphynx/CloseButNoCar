@@ -42,48 +42,13 @@
       <div class="row placeholder-lg"></div>
       <!-- Content Cards -->
       <div class="bkgImg row justify-content-center ">
-        <div class="row pt-5 bg-dark mb-3 h-80 border-linear" style="max-width: 78rem;">
-          <div class="row ">
-            <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Creer une enchère</p>
+        <div class="card border-danger d-flex align-content-center bg-dark mb-3 h-80" style="max-width: 78rem;">
+          <div class="card-header d-flex justify-content-center fs40 text-danger">Oups! Mauvaise direction!</div>
+          <div class="card-body d-flex flex-column justify-content-center align-items-center text-danger">
+            <h5 class="card-title d-flex  align-items-center ralewayB900 fs60">Les Enchères c'est par ici !</h5>
+            <button type="button" class="btn btn-outline-danger btn-lg w-25 ">Retour</button>
           </div>
-        <!-- colone de Gauche-->
-          <div class="col-6">
-            <div class="mb-3">
-              <label for="marque" class="form-label colorWhite">Marque</label>
-              <input type="text" class="form-control" id="marque" name="marque" >
-            </div>
-            <div class="mb-3">
-              <label for="modele" class="form-label colorWhite">Modèle</label>
-              <input type="text" class="form-control" id="modele" name="modele" >
-            </div>
-            <div class="mb-3">
-              <label for="annee" class="form-label colorWhite">Année</label>
-              <input type="text" class="form-control" id="annee" name="annee" >
-            </div>
-          </div>
-          <!-- colone de Droite-->
-            <div class="col-6">
-              <div class="mb-3">
-                <label for="prix" class="form-label colorWhite">Prix</label>
-                <input type="text" class="form-control" id="prix" name="prix" >
-              </div>
-              <div class="mb-3">
-                <input type="hidden" class="form-control" id="date" name="date" >
-              </div>
-              <div class="mb-3">
-                <label for="description" class="form-label colorWhite">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="1"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
-                <input class="form-control" type="file" id="image" name="image">
-              </div>
-            </div>
-            <div class="row justify-content-center ">
-              <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3">Valider</button>
-              </div>
-            </div>
+        </div>  
       </div>
         
     </div>
