@@ -59,14 +59,27 @@
       </nav>
     </div>
 
-    <!-- Body de Auction Details -->
-    <div class="row">
-      <div class="col">
-        <div class="bkgImg row">
-
+    <!-- Body de l'index -->
+    <div class="bkgImg row">
+      <div class="row">
+        <!-- Colonne de gauche -->
+        <div class="col-2 border">
         </div>
-        <!-- <img src=""> -->
-
+        <!-- Colonne de droite -->
+        <div class="col-10 border">
+          <div class="row d-flex details">
+            <div class="col detailsimg">
+            </div>
+            <div class="col border detailsinfos">
+              <p>MARQUE :</p>
+              <p>MODÈLE :</p>
+              <p>ENCHÈRE EN COURS :</p>
+            </div>
+          </div>
+          <div class="row d-flex border description">
+            <p>DESCRIPTION</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

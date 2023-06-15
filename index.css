@@ -2,8 +2,12 @@
     background-color: #382d2a;
 }
 
+body {
+    background-color: #382d2a;
+}
+
 .bkgImg {
-    height: 95vh;
+    height: 100vh;
     background-image: url("public/logoT.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -100,4 +104,28 @@
     width: 67px;
     border: #382d2a 1px solid;
     margin: 10px;
+}
+
+.detailsimg {
+    width: 400px;
+    height: 300px;
+    margin: 5px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-image: url("../CloseButNoCar/public/rolls.jpeg");
+}
+
+.detailsinfos {
+    width: 400px;
+    height: 300px;
+    margin: 5px;
+    box-sizing: border-box;
+    color: white;
+}
+
+.description {
+    height: 400px;
+    margin: 2px;
+    box-sizing: border-box;
+    color: white;
 }
