@@ -3,9 +3,8 @@
 }
 
 .bkgImg {
-    opacity: 20%;
     height: 95vh;
-    background-image: url("/lebocal/Ateliers/CloseButNoCar/public/logo1.png");
+    background-image: url("public/logoT.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -15,8 +14,90 @@
 }
 
 .activeGradient {
-    background: -webkit-linear-gradient(45deg, yellow, red);
+    background: -webkit-linear-gradient(45deg, #ff656e, #f8c270);
     -webkit-background-clip: text;
     font-size: 16px;
-    background-clip: border-box;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 300px;
+    align-items: left;
+    justify-content: start;
+    padding: 1%;
+    box-sizing: border-box;
+    margin-left: 2%;
+    margin-top: 0;
+    background-color: #f8c27033;
+    border-radius: 4px;
+}
+
+.username {
+    display: flex;
+    flex-direction: column;
+}
+
+.hUsername {
+    color: white;
+    font-size: large;
+    text-align: left;
+    text-justify: center;
+    margin: 2%;
+}
+
+.btnEdit {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    height: 10vh;
+}
+
+.btn-outline-primary {
+    display: flex;
+    height: 6vh;
+    width: 10vw;
+    background-image: linear-gradient(to right, #ff656e 0%, #FFEDBC 51%, #f8c270 100%);
+    padding: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 4px;
+    display: block;
+    border: none;
+    margin: 10px;
+}
+
+.btn-outline-primary:hover {
+    background-position: right center;
+    color: #382d2a;
+    text-decoration: none;
+    transition: 0.5s;
+    font-weight: 700;
+}
+
+.userInfo {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    height: 70%;
+    justify-content: space-evenly;
+    border-left: 1px solid white;
+    padding: 2%;
+    margin: 2%;
+}
+
+.profilePicture {
+    border-radius: 50px;
+    height: 70px;
+    width: 67px;
+    border: #382d2a 1px solid;
+    margin: 10px;
 }

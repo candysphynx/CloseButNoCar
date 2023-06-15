@@ -21,8 +21,8 @@
 
   <div class="container-fluid bkgBrown">
     <!-- Menu -->
-    <div class="row">
-      <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="row sticky-top">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
         </a>
         <a class="navbar-brand" href="#">
@@ -39,7 +39,7 @@
               <a class="nav-link" href="#">Enchères <span class="sr-only">(ici)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="#">Enchères Terminées</a>
+              <a class="nav-link active" href="#">Enchères Terminées</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="#">Mon Profil</a>
@@ -51,7 +51,7 @@
               <a class="nav-link active" href="#">Mes Annonces</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Logout</a>
+              <a class="nav-link active" href="#">Logout</a>
             </li>
 
           </ul>
@@ -61,17 +61,27 @@
 
     <!-- Body du profil -->
     <div class="row">
-
-      <!-- Bloc Profil -->
-      <div class="col-10">
+      <div class="col">
         <div class="bkgImg row">
+          <div class="btnEdit">
+            <button type="button" class="btn btn-outline-primary">EDIT</button>
+          </div>
+          <div class="user">
+            <div class="profilePicture">
+              <img src="">
+            </div>
+            <div class="username">
+              <h2 class="hUsername">USERNAME</h2>
+            </div>
+            <div class="userInfo">
+              <p>Nombre d'enchères :</p>
+              <p>Nombre d'annonces :</p>
+              <p>E-mail :</p>
+              <p>Password :</p>
+            </div>
+          </div>
         </div>
-        <div class="userPP">
-          <img src="">
-        </div>
-        <div class="userPP">
-          <h2 class="username">USERNAME</h2>
-        </div>
+        <!-- <img src=""> -->
 
       </div>
     </div>
