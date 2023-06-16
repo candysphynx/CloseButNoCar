@@ -63,23 +63,36 @@
     <div class="row">
       <div class="col">
         <div class="bkgImg row">
-          <div class="btnEdit">
-            <button type="button" class="btn btn-outline-primary">EDIT</button>
-          </div>
-          <div class="user">
-            <div class="profilePicture">
-              <img src="">
+          <!-- <?php
+          foreach ($this->result as $infos) { ?> -->
+            <div class="btnEdit">
+              <button type="button" class="btn btn-outline-primary">EDIT</button>
             </div>
-            <div class="username">
-              <h2 class="hUsername">USERNAME</h2>
+            <div class="user">
+              <div class="profilePicture">
+                <img src="">
+              </div>
+              <div class="username">
+                <h2 class="hUsername">
+                  <?php echo $infos->username ?> USERNAME
+                </h2>
+              </div>
+              <div class="userInfo">
+                <p>Nombre d'enchères :
+                  <?php echo "$infos->NOMBREENCHERES" ?>
+                </p>
+                <p>Nombre d'annonces :
+                  <?php echo "$infos->NOMBREANNONCES" ?>
+                </p>
+                <p>E-mail :
+                  <?php echo "$infos->user_email" ?>
+                </p>
+                <p>Password :
+                  <?php echo "$infos->user_pwd" ?>
+                </p>
+              </div>
             </div>
-            <div class="userInfo">
-              <p>Nombre d'enchères :</p>
-              <p>Nombre d'annonces :</p>
-              <p>E-mail :</p>
-              <p>Password :</p>
-            </div>
-          </div>
+            <!-- <?php } ?> -->
         </div>
         <!-- <img src=""> -->
 
