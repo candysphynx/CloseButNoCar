@@ -121,6 +121,10 @@ body {
     margin: 5px;
     box-sizing: border-box;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .description {

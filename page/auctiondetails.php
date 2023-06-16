@@ -63,10 +63,10 @@
     <div class="bkgImg row">
       <div class="row">
         <!-- Colonne de gauche -->
-        <div class="col-2 border">
+        <div class="col-2 border mb-5">
         </div>
         <!-- Colonne de droite -->
-        <div class="col-10 border">
+        <div class="col-10 border detailspage mb-5">
           <div class="row d-flex details">
             <div class="col detailsimg">
             </div>
