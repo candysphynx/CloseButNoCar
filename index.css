@@ -133,3 +133,67 @@ body {
     box-sizing: border-box;
     color: white;
 }
+
+/*Polices Raleway*/
+
+.ralewayT100 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+}
+
+.raleway300 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+}
+
+.raleway400 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+}
+
+.ralewayB700 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-weight: 700;
+}
+
+.ralewayB900 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-weight: 900;
+}
+
+/*Polices Sizes*/
+
+.fs20 {
+    font-size: 20px;
+}
+
+.fs40 {
+    font-size: 40px;
+}
+
+.fs50 {
+    font-size: 50px;
+}
+
+.fs60 {
+    font-size: 60px;
+}
+
+.h-80 {
+    height: 80%;
+}
+
+.border-linear {
+    background: radial-gradient(circle at 100% 100%, #262323 0, #262323 1px, transparent 1px) 0% 0%/4px 4px no-repeat,
+        radial-gradient(circle at 0 100%, #262323 0, #262323 1px, transparent 1px) 100% 0%/4px 4px no-repeat,
+        radial-gradient(circle at 100% 0, #262323 0, #262323 1px, transparent 1px) 0% 100%/4px 4px no-repeat,
+        radial-gradient(circle at 0 0, #262323 0, #262323 1px, transparent 1px) 100% 100%/4px 4px no-repeat,
+        linear-gradient(#262323, #262323) 50% 50%/calc(100% - 6px) calc(100% - 8px) no-repeat,
+        linear-gradient(#262323, #262323) 50% 50%/calc(100% - 8px) calc(100% - 6px) no-repeat,
+        linear-gradient(346deg, rgba(251, 232, 40, 1) 0%, #e0484c 100%);
+    border-radius: 4px;
+    padding: 12px;
+    box-sizing: content-box;
+}
