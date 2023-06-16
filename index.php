@@ -43,7 +43,7 @@
             <a class="nav-link disabled" href="./page/contributeauction.php">Mes Contributions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="./page/auctionuser.php">Mes Annonces</a>
+            <a class="nav-link disabled" href="./newauction.php">Mes Annonces</a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="./page/authentication.php">Login</a>

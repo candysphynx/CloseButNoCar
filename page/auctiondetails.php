@@ -1,3 +1,10 @@
+<?php
+include_once __DIR__."\..\classes\auction\AuctionDetailsClass.php";
+
+use auction\AuctionDetails;
+?>
+
+
 <!doctype html>
 <html lang="fr">
 
@@ -47,7 +54,7 @@
             <a class="nav-link disabled" href="./contributeauction.php">Mes Contributions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="./auctionuser.php">Mes Annonces</a>
+            <a class="nav-link disabled" href="./newauction.php">Mes Annonces</a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="./authentication.php">Login</a>
@@ -60,26 +67,9 @@
 
     <!-- Body de l'index -->
     <div class="bkgImg row">
-      <div class="row">
-        <!-- Colonne de gauche -->
-        <div class="col-2 border mb-5">
-        </div>
-        <!-- Colonne de droite -->
-        <div class="col-10 border detailspage mb-5">
-          <div class="row d-flex details">
-            <div class="col detailsimg">
-            </div>
-            <div class="col border detailsinfos">
-              <p>MARQUE :</p>
-              <p>MODÈLE :</p>
-              <p>ENCHÈRE EN COURS :</p>
-            </div>
-          </div>
-          <div class="row d-flex border description">
-            <p>DESCRIPTION</p>
-          </div>
-        </div>
-      </div>
+      <?php
+      AuctionDetails::getAuctionDetails();
+      ?>
     </div>
   </div>
 
