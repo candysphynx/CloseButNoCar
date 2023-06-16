@@ -16,23 +16,41 @@
 <div class="container-fluid bkgBrown">
   <!-- Menu -->
   <div class="row sticky-top">
-  <nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-      <img src="../public/favico.png" width="30" height="30" alt="">
-    </a>
-      <a class="navbar-brand" href="#">Close But No Car
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav px-3">
-          <li class="nav-item active ">
-            <a class="nav-link" href="#">Retour </a>
-          </li>
-        </ul>
-      </div>
-  </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+        </a>
+        <a class="navbar-brand" href="#">
+          <img src="../public/favico.png" width="30" height="30" alt="">
+        </a>
+        <a class="navbar-brand" href="../index.php">Close But No Car</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav px-3">
+            <li class="nav-item">
+              <a class="nav-link active" href="../index.php">Enchères</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="./pastbids.php">Enchères Terminées</a>
+            </li>
+            <li class="nav-item active ">
+              <a class="nav-link active" href="#">Mon Profil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="./contributeauction.php">Mes Contributions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="./auctionuser.php">Mes Annonces</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Logout</a>
+            </li>
+
+          </ul>
+        </div>
+      </nav>
 </div>
   
     <!-- Body de l'index -->
@@ -40,44 +58,46 @@
     <div class="col">
       <div class="row placeholder-lg"></div>
       <!-- Content Cards -->
-      <div class="bkgImg row justify-content-center ">
+      <div class="bkgImg row justify-content-center  ">
         <div class="row pt-5 bg-dark mb-3 h-80 border-linear" style="max-width: 78rem;">
           <div class="row ">
             <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Creer une enchère</p>
           </div>
-        <!-- colone de Gauche-->
-          <div class="col-6">
-            <div class="mb-3">
-              <label for="marque" class="form-label colorWhite">Marque</label>
-              <input type="text" class="form-control" id="marque" name="marque" >
-            </div>
-            <div class="mb-3">
-              <label for="modele" class="form-label colorWhite">Modèle</label>
-              <input type="text" class="form-control" id="modele" name="modele" >
-            </div>
-            <div class="mb-3">
-              <label for="annee" class="form-label colorWhite">Année</label>
-              <input type="text" class="form-control" id="annee" name="annee" >
-            </div>
-          </div>
-          <!-- colone de Droite-->
+          <div class="row ">
+        <!-- colone de Gauche-->  
             <div class="col-6">
               <div class="mb-3">
-                <label for="prix" class="form-label colorWhite">Prix</label>
-                <input type="text" class="form-control" id="prix" name="prix" >
+                <label for="marque" class="form-label colorWhite">Marque</label>
+                <input type="text" class="form-control" id="marque" name="marque" >
               </div>
               <div class="mb-3">
-                <input type="hidden" class="form-control" id="date" name="date" >
+                <label for="modele" class="form-label colorWhite">Modèle</label>
+                <input type="text" class="form-control" id="modele" name="modele" >
               </div>
               <div class="mb-3">
-                <label for="description" class="form-label colorWhite">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="1"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
-                <input class="form-control" type="file" id="image" name="image">
+                <label for="annee" class="form-label colorWhite">Année</label>
+                <input type="text" class="form-control" id="annee" name="annee" >
               </div>
             </div>
+            <!-- colone de Droite-->
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="prix" class="form-label colorWhite">Prix</label>
+                  <input type="text" class="form-control" id="prix" name="prix" >
+                </div>
+                <div class="mb-3">
+                  <input type="hidden" class="form-control" id="date" name="date" >
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label colorWhite">Description</label>
+                  <textarea class="form-control" id="description" name="description" rows="1"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="image" class="form-label">Image</label>
+                  <input class="form-control" type="file" id="image" name="image">
+                </div>
+              </div>
+          </div>
             <div class="row justify-content-center ">
               <div class="col-auto">
                 <button type="submit" class="btn btn-primary mb-3">Valider</button>

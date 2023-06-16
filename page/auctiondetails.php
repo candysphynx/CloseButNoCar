@@ -22,41 +22,40 @@
   <div class="container-fluid bkgBrown">
     <!-- Menu -->
     <div class="row sticky-top">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-        </a>
-        <a class="navbar-brand" href="#">
-          <img src="../public/favico.png" width="30" height="30" alt="">
-        </a>
-        <a class="navbar-brand" href="#">Close But No Car</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav px-3">
-            <li class="nav-item active activeGradient">
-              <a class="nav-link" href="#">Enchères</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Enchères Terminées</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Mon Profil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Mes Contributions</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Mes Annonces</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Logout</a>
-            </li>
-
-          </ul>
-        </div>
-      </nav>
+    <nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+    </a>
+    <a class="navbar-brand" href="../index.php">
+      <img src="../public/favico.png" width="30" height="30" alt="">
+    </a>
+      <a class="navbar-brand" href="../index.php">Close But No Car</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav px-3">
+          <li class="nav-item active activeGradient">
+            <a class="nav-link" href="../index.php">Enchères <span class="sr-only">(ici)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="./pastbids.php">Enchères Terminées</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="./user.php">Mon Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="./contributeauction.php">Mes Contributions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="./auctionuser.php">Mes Annonces</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="./authentication.php">Login</a>
+          </li>
+          
+        </ul>
+      </div>
+  </nav>
     </div>
 
     <!-- Body de Auction Details -->
