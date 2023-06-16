@@ -2,8 +2,9 @@
 
 namespace user;
 
-include_once __DIR__ . "\..\classes\user\UserClass.php";
-include_once __DIR__ . "\..\classes\DataBase.php";
+include_once __DIR__ . "/../classes/user/UserClass.php";
+
+include_once __DIR__ . "/../classes/DataBase.php";
 
 use User;
 
@@ -78,7 +79,7 @@ use User;
             <button type="button" class="btn btn-outline-primary">EDIT</button>
           </div>
           <?php
-          User::displayUserInfos(); ?>
+          user\User::displayUserInfos(); ?>
         </div>
       </div>
     </div>

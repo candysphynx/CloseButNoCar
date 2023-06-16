@@ -2,9 +2,8 @@
 
 namespace user;
 
-include_once __DIR__ . "\..\DataBase.php";
-include_once __DIR__ . "\..\page\user.php";
-
+include_once __DIR__ . "/../DataBase.php";
+include_once __DIR__ . "/../../page/user.php";
 use Database;
 use PDO;
 
@@ -80,10 +79,8 @@ class User
             echo "</p>
             <p>E-mail :";
             echo $userInfo['user_email'];
-            echo "</p>
-              <p>Password :";
-            echo $userInfo['user_img'];
-            echo "</p>
+            echo '<img src = "data:image/png;base64,' . base64_encode($userInfo['user_img']) . '" width = "50px" height = "50px"/>';
+            echo "
             </div>
           </div>";
         }
