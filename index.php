@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="fr">
   <head>
@@ -20,32 +21,32 @@
   <nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
     </a>
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="./index.php">
       <img src="./public/favico.png" width="30" height="30" alt="">
     </a>
-      <a class="navbar-brand" href="#">Close But No Car</a>
+      <a class="navbar-brand" href="./index.php">Close But No Car</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav px-3">
           <li class="nav-item active activeGradient">
-            <a class="nav-link" href="#">Enchères <span class="sr-only">(ici)</span></a>
+            <a class="nav-link" href="./index.php">Enchères <span class="sr-only">(ici)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="#">Enchères Terminées</a>
+            <a class="nav-link " href="./page/pastbids.php">Enchères Terminées</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Mon Profil</a>
+            <a class="nav-link disabled" href="./page/user.php">Mon Profil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Mes Contributions</a>
+            <a class="nav-link disabled" href="./page/contributeauction.php">Mes Contributions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Mes Annonces</a>
+            <a class="nav-link disabled" href="./page/auctionuser.php">Mes Annonces</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="#">Login</a>
+            <a class="nav-link " href="./page/authentication.php">Login</a>
           </li>
           
         </ul>
