@@ -1,4 +1,9 @@
 
+<?php
+include_once __DIR__."\.\classes\auction\AuctionDetailsClass.php";
+use auction\AuctionDetails;
+?>
+
 <!doctype html>
 <html lang="fr">
   <head>
@@ -66,6 +71,9 @@
         </div>
         <!-- Content Cards -->
         <div class="bkgImg row">
+          <?php
+            AuctionDetails::getAuctionSimple();
+          ?>
         </div>
 
       </div>
