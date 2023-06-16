@@ -29,6 +29,14 @@ class User
         $query->execute(array(":username" => $this->username, ":user_age" => $this->user_age, ":user_email" => $this->user_email, ":user_pwd" => $this->user_pwd, ":user_img" => $this->user_img));
     }
 
+    public function __get($username)
+    {
+        $dbh = new PDO("mysql:dbname=cbnc;host=127.0.0.1;port=8889", "root", "root");
+
+        $query = $dbh->prepare("SELECT * FROM `user` WHERE `username =  ?`");
+
+        $query->execute(array(":username" => $this->username, ":user_age" => $this->user_age, ":user_email" => $this->user_email, ":user_pwd" => $this->user_pwd, ":user_img" => $this->user_img));
+    }
     public function displayUserInfos()
     {
         echo "<div class=\"DisplayUserInfo\">";
