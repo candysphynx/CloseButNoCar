@@ -78,7 +78,7 @@ class AuctionDetails extends Auction {
             $query-> execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
             foreach($result as $row) {?>
-                <div class="card m-3 colorWhite bg-dark" style="width: 16rem;">
+                <div class="card m-3 colorWhite bg-dark border-linear shadow-lg" style="width: 16rem;">
                     <img src="<?php echo 'data:image/png;base64,' . base64_encode($row['obj_img']);?>" class=" imgcard card-img-top " alt="...">
                     <div class="card-body d-flex flex-column align-items-center">
                         <h5 class="card-title"><?php echo $row['obj_brand'];?> <?php echo $row['obj_model'];?></h5>
