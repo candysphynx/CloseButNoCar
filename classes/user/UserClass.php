@@ -3,6 +3,7 @@
 namespace user;
 
 include_once __DIR__ . "\..\DataBase.php";
+include_once __DIR__ . "\..\page\user.php";
 
 use Database;
 use PDO;

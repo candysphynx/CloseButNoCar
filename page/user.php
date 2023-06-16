@@ -2,7 +2,8 @@
 
 namespace user;
 
-include_once __DIR__ . "\..\UserClass.php";
+include_once __DIR__ . "\..\classes\user\UserClass.php";
+include_once __DIR__ . "\..\classes\DataBase.php";
 
 use User;
 
