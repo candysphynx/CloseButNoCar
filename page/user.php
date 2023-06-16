@@ -1,3 +1,13 @@
+<?php
+
+namespace user;
+
+include_once __DIR__ . "\..\UserClass.php";
+
+use User;
+
+?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -63,39 +73,12 @@
     <div class="row">
       <div class="col">
         <div class="bkgImg row">
-          <!-- <?php
-          foreach ($this->result as $infos) { ?> -->
-            <div class="btnEdit">
-              <button type="button" class="btn btn-outline-primary">EDIT</button>
-            </div>
-            <div class="user">
-              <div class="profilePicture">
-                <img src="">
-              </div>
-              <div class="username">
-                <h2 class="hUsername">
-                  <?php echo $infos->username ?> USERNAME
-                </h2>
-              </div>
-              <div class="userInfo">
-                <p>Nombre d'enchères :
-                  <?php echo "$infos->NOMBREENCHERES" ?>
-                </p>
-                <p>Nombre d'annonces :
-                  <?php echo "$infos->NOMBREANNONCES" ?>
-                </p>
-                <p>E-mail :
-                  <?php echo "$infos->user_email" ?>
-                </p>
-                <p>Password :
-                  <?php echo "$infos->user_pwd" ?>
-                </p>
-              </div>
-            </div>
-            <!-- <?php } ?> -->
+          <div class="btnEdit">
+            <button type="button" class="btn btn-outline-primary">EDIT</button>
+          </div>
+          <?php
+          User::displayUserInfos(); ?>
         </div>
-        <!-- <img src=""> -->
-
       </div>
     </div>
   </div>
