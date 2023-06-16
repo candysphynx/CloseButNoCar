@@ -45,7 +45,7 @@
               <a class="nav-link active" href="./auctionuser.php">Mes Annonces</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#">Logout</a>
+              <a class="nav-link active" href="./authentication.php">Logout</a>
             </li>
 
           </ul>
