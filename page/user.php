@@ -22,7 +22,7 @@
   <div class="container-fluid bkgBrown">
     <!-- Menu -->
     <div class="row sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
         </a>
         <a class="navbar-brand" href="#">
