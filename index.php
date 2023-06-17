@@ -1,6 +1,7 @@
 
 <?php
 include_once __DIR__."\.\classes\auction\AuctionDetailsClass.php";
+include __DIR__."/auth/sessions_management.php";
 use auction\AuctionDetails;
 ?>
 

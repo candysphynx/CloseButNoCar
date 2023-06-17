@@ -56,7 +56,7 @@ class User
     {
         $dbh = Database::createDBConnection();
         $id = 1;
-        $query = $dbh->prepare("SELECT * FROM `user` WHERE `id` = 1");
+        $query = $dbh->prepare("SELECT * FROM `user` WHERE `id` = ?");
         $query->execute([$id]);
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $userInfo) {
