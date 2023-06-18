@@ -62,8 +62,9 @@ class User
         foreach ($result as $userInfo) {
 
             echo "<div class=\"user\">";
-            echo "<div class=\"profilePicture\">";
-            echo "<img src=\"\">
+            echo "<div >";
+            echo '<img class= "profilePicture" src = "data:image/png;base64,' . base64_encode($userInfo['user_img']) . '" width = "70px"  height = "70px"/>';
+            echo "
             </div>
             <div class=\"username\">
             <h2 class=\"hUsername\">";
@@ -79,7 +80,6 @@ class User
             echo "</p>
             <p>E-mail :";
             echo $userInfo['user_email'];
-            echo '<img src = "data:image/png;base64,' . base64_encode($userInfo['user_img']) . '" width = "50px" height = "50px"/>';
             echo "
             </div>
           </div>";

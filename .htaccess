@@ -1,6 +1,8 @@
 RewriteEngine On
-ErrorDocument 404 /lebocal/Ateliers/CloseButNoCar/page/404.php
-ErrorDocument 500 /page/notfound.php
-ErrorDocument 403 /page/notfound.php
-ErrorDocument 400 /page/notfound.php
-ErrorDocument 401 /page/notfound.php
+
+# Determine le chemin d'accès par rapport aux dossiers du localhost
+RewriteCond %{REQUEST_URI} ^(.*)/
+RewriteRule ^ - [E=BASE_PATH:%1]
+
+
+ErrorDocument 404 /%{ENV:BASE_PATH}/404.php

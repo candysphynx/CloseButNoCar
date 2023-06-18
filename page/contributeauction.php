@@ -1,3 +1,8 @@
+<?php
+session_start();
+include_once __DIR__."\..\auth\sessions_management.php";
+if( isConnected() == False) { header('Location: authentication.php'); exit();  }
+?>
 <!doctype html>
 <html lang="fr">
   <head>
@@ -16,42 +21,11 @@
 <div class="container-fluid bkgBrown">
   <!-- Menu -->
   <div class="row sticky-top">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-        </a>
-        <a class="navbar-brand" href="#">
-          <img src="../public/favico.png" width="30" height="30" alt="">
-        </a>
-        <a class="navbar-brand" href="../index.php">Close But No Car</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav px-3">
-            <li class="nav-item">
-              <a class="nav-link active" href="../index.php">Enchères</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="./pastbids.php">Enchères Terminées</a>
-            </li>
-            <li class="nav-item active ">
-              <a class="nav-link active" href="./user.php">Mon Profil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active activeGradient" href="#">Mes Contributions</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="./newauction.php">Mes Annonces</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="./authentication.php">Logout</a>
-            </li>
+  <?php
+    include __DIR__."\..\layout\displaymenu.php";
+    ?>
+    </div>
 
-          </ul>
-        </div>
-      </nav>
-</div>
   
     <!-- Body de l'index -->
   <div class="row align-content-center">    
@@ -59,7 +33,7 @@
       <div class="row placeholder-lg"></div>
       <!-- Content Cards -->
       <div class="bkgImg row justify-content-center  ">
-        <div class="row pt-5 bg-dark mb-3 h-80 border-linear" style="max-width: 78rem;">
+        <div class="row pt-5 bg-dark mb-3  border-linear" style="max-width: 58rem;">
           <div class="row ">
             <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Vos Contributions</p>
           </div>

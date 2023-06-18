@@ -1,17 +1,15 @@
 <?php
 /* Verification de l'existance d'une session*/
 function isConnected() {
-    if(session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
+    if(isset($_SESSION['user_id'])) {
         // session isn't started
-        return false;
+        
+        return true;
     }
-    return true;
+    return false;
 }
 /* Création de la session + Cookie*/ 
-function createSession($user_id) {
-   session_start([
-    'cookie_lifetime' => 600,
-    ]); 
+function createUserSession($user_id) {
     $_SESSION['user_id'] = $user_id;
 }
 /* Récuperer la valeur d'une des clefs créés de la session courante */
@@ -27,6 +25,7 @@ function setValue($key,$value) {
 
 /* Stopper la session */
 
-function detroySession () {
+function destroySession () {
     session_destroy();
+    
 }
