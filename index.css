@@ -16,6 +16,9 @@ body {
 .colorWhite {
     color: white;
 }
+.colorRed{
+    color: red;
+}
 
 .activeGradient {
     background: -webkit-linear-gradient(45deg, #ff656e, #f8c270);
@@ -203,4 +206,19 @@ body {
 }
 .imgcard{
     min-height: 150px;
+}
+.imgcard2{
+    min-height: 103px;
+}
+#createauction {
+    display:none; 
+}
+#btnClick2 {
+    display:none; 
+}
+#ourauction {
+    display:flex; 
+}
+#modify_user {
+    display:none; 
 }

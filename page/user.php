@@ -1,9 +1,12 @@
 <?php
 
 namespace user;
+session_start();
+include_once __DIR__."\..\auth\sessions_management.php";
+if( isConnected() == False) { header('Location: authentication.php'); exit();  }
 
 include_once __DIR__ . "/../classes/user/UserClass.php";
-
+include_once __DIR__."\..\auth\sessions_management.php";
 include_once __DIR__ . "/../classes/DataBase.php";
 
 use User;
@@ -26,7 +29,14 @@ use User;
   <link
     href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript">
+       $(document).ready(function() {
+        $("#edit").click(function() {
+                $("#modify_user").css("display", "flex");}) 
+        });
+                
+    </script>
 </head>
 
 <body>
@@ -34,41 +44,9 @@ use User;
   <div class="container-fluid bkgBrown">
     <!-- Menu -->
     <div class="row sticky-top">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-        </a>
-        <a class="navbar-brand" href="#">
-          <img src="../public/favico.png" width="30" height="30" alt="">
-        </a>
-        <a class="navbar-brand" href="../index.php">Close But No Car</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav px-3">
-            <li class="nav-item">
-              <a class="nav-link active" href="../index.php">Enchères</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="./pastbids.php">Enchères Terminées</a>
-            </li>
-            <li class="nav-item active activeGradient">
-              <a class="nav-link active" href="#">Mon Profil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="./contributeauction.php">Mes Contributions</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="./newauction.php">Mes Annonces</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Logout</a>
-            </li>
-
-          </ul>
-        </div>
-      </nav>
+    <?php
+    include __DIR__."\..\layout\displaymenu.php";
+    ?>
     </div>
 
     <!-- Body du profil -->
@@ -76,10 +54,22 @@ use User;
       <div class="col">
         <div class="bkgImg row">
           <div class="btnEdit">
-            <button type="button" class="btn btn-outline-primary">EDIT</button>
+            <button type="button" id="edit" class="btn btn-outline-primary">EDIT</button>
           </div>
-          <?php
-          user\User::displayUserInfos(); ?>
+            <div class="row">
+              <!-- Col de Gauche -->
+              <div class="col-6">
+            <?php
+            user\User::displayUserInfos(); ?>
+              </div>
+              <!-- Col de Droite -->
+              <div class="col-6">
+                <form id="modify_user">
+                  <input type="text"/>
+                  <input type="text"/>
+                </form>
+              </div>
+            </div>
         </div>
       </div>
     </div>

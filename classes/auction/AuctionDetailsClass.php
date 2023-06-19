@@ -23,9 +23,9 @@ class AuctionDetails extends Auction {
     {
         $dbh = Database::createDBConnection();
 
-        $query = $dbh->prepare("INSERT INTO `obj_model` (`obj_brand`, `obj_img`, `obj_year`, `obj_price` , `obj_descr`, `obj_date`)");
+        $query = $dbh->prepare("INSERT INTO `object` (`obj_model`, `obj_brand`, `obj_img`, `obj_year`, `obj_price` , `obj_descr`, `obj_date`) VALUES (?,?,?,?,?,?,?)");
 
-        $query->execute(array(":obj_model" => $this->obj_model, ":obj_brand" => $this->obj_brand, ":obj_img" => $this->obj_img, ":obj_year" => $this->obj_year, ":obj_price" => $this->obj_price, ":obj_descr" => $this->obj_descr, ":obj_date" => $this->obj_date));
+        $query->execute([$this->obj_model, $this->obj_brand, $this->obj_img, $this->obj_year, $this->obj_price, $this->obj_descr, $this->obj_date,]);
     }
 
     public function __get($property)
@@ -35,10 +35,9 @@ class AuctionDetails extends Auction {
         }
     }
 
-    public static function getAuctionDetails()
+    public static function getAuctionDetails($id)
     {
         $dbh = Database::createDBConnection();
-        $id=2;
         $query = $dbh->prepare("SELECT * FROM `object` WHERE `id`= ?");
         $query-> execute([$id]);
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -52,7 +51,7 @@ class AuctionDetails extends Auction {
                 <div class="col-10 border detailspage mb-5">
                 <div class="row d-flex details">
                         <div class="col">
-                        <img class="imgAuction" src =" <?php echo 'data:image/png;base64,' . base64_encode($row['obj_img']);?>"/>
+                        <img class="imgAuction" src =" <?php echo 'data:image/jpg;base64,' . base64_encode($row['obj_img']);?>"/>
                         </div>
                         <div class="col border detailsinfos">
                         <p>MARQUE : <?php echo $row['obj_brand'];?></p>
@@ -71,7 +70,7 @@ class AuctionDetails extends Auction {
             <?php
         }
         }
-        public static function getAuctionSimple()
+    public static function getAuctionSimple()
         {
             $dbh = Database::createDBConnection();
             $query = $dbh->prepare("SELECT `id`,`obj_model`,`obj_brand`,`obj_img`,`obj_year`,`obj_price` FROM `object` ");
@@ -84,8 +83,31 @@ class AuctionDetails extends Auction {
                         <h5 class="card-title"><?php echo $row['obj_brand'];?> <?php echo $row['obj_model'];?></h5>
                         <p class="card-text">Année: <?php echo $row['obj_year'];?></p>
                         <p class="card-text">Prix de <?php echo $row['obj_price'];?>  €</p>
-                        <a href="./page/auctiondetails.php" class="btn btn-outline-primary">Détails</a>
+                        <a href="auctiondetails.php?auctionid=<?php echo $row['id'];?>" class="btn btn-outline-primary">Détails</a>
                     </div>
                 </div>
                 <?php }
-             }}
+             }
+public static function getAuctionUser($id)
+             {
+                 $dbh = Database::createDBConnection();
+                 $query = $dbh->prepare("SELECT * FROM `object` WHERE `user_id`= ?");
+                 $query-> execute([$id]);
+                 $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                 foreach($result as $row) {
+                             ?>
+                                 <div class="card m-3 colorWhite bg-dark border-linear details " style="width: 10rem; height: 250px ">
+                                    <img src="<?php echo 'data:image/jpg;base64,' . base64_encode($row['obj_img']);?>" class="card-img-top imgcard2" alt="...">
+                                    <div class="card-body d-flex flex-column align-items-center ">
+                                        <p class="card-text"><?php echo $row['obj_brand'];?></p>
+                                        <p class="card-text"><?php echo $row['obj_model'];?></p>
+                                        <a href="auctiondetails.php?auctionid=<?php echo $row['id'];?>" class="btn btn-outline-primary">Détails</a>
+                                    </div>
+                                 </div>
+                     <?php
+                 }
+                 }
+
+}
+
+    
