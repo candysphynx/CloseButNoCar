@@ -51,7 +51,7 @@ if (isset($_POST['button2'])) {
         <!-- Content Cards -->
         <div class="bkgImg row justify-content-center  ">
           <!-- Sign-in form -->
-          <div class="row pt-2 bg-dark mb-3 h-80 border-linear " style="max-width: 60rem;">
+          <div class="row pt-2 bg-dark mb-3 border-linear " style="max-width: 60rem;">
             <div class="mb-5 row ">
               <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Connexion</p>
             </div>
@@ -76,7 +76,7 @@ if (isset($_POST['button2'])) {
             </div>
           </div>
           <!-- Inscription form -->
-          <div class="row sm-2 bg-dark mb-3 border-linear " style="max-width: 60rem;">
+          <div class="row sm-2 bg-dark mb-3 border-linear" style="max-width: 60rem;">
             <div class="mb-5 row ">
               <p class="colorWhite raleway400 fs40 justify-content-center">Inscription</p>
             </div>
