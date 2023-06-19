@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once __DIR__."\..\auth\sessions_management.php";
+include_once __DIR__."/../auth/sessions_management.php";
 if( isConnected() == False) { header('Location: authentication.php'); exit();  }
 ?>
 <!doctype html>
@@ -22,7 +22,7 @@ if( isConnected() == False) { header('Location: authentication.php'); exit();  }
   <!-- Menu -->
   <div class="row sticky-top">
   <?php
-    include __DIR__."\..\layout\displaymenu.php";
+    include __DIR__."/../layout/displaymenu.php";
     ?>
     </div>
 

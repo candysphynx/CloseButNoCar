@@ -1,8 +1,8 @@
 
 <?php
 session_start();
-include_once __DIR__."\..\classes\auction\AuctionDetailsClass.php";
-include_once __DIR__."\..\auth\sessions_management.php";
+include_once __DIR__."/../classes/auction/AuctionDetailsClass.php";
+include_once __DIR__."/../auth/sessions_management.php";
 use auction\AuctionDetails;
 ?>
 
@@ -27,7 +27,7 @@ use auction\AuctionDetails;
   <!-- Menu -->
   <div class="row sticky-top">
   <?php
-  include __DIR__."\..\layout\displaymenu.php";
+  include __DIR__."/../layout/displaymenu.php";
   ?>
 
   </div>

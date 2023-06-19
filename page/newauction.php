@@ -3,8 +3,8 @@
 use auction\AuctionDetails;
 
 session_start();
-include_once __DIR__."\..\auth\sessions_management.php";
-include_once __DIR__."\..\classes\auction\AuctionDetailsClass.php";
+include_once __DIR__."/../auth/sessions_management.php";
+include_once __DIR__."/../classes/auction/AuctionDetailsClass.php";
 if( isConnected() == False) { header('Location: authentication.php'); exit();  }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") { 
@@ -69,7 +69,7 @@ else {
   <!-- Menu -->
   <div class="row sticky-top">
   <?php
-    include __DIR__."\..\layout\displaymenu.php";
+    include __DIR__."/../layout/displaymenu.php";
     ?>
     </div>
 
@@ -84,7 +84,7 @@ else {
       </div>
       <div class="row placeholder-lg"></div>
       <div id="createauction"  class="bkgImg row justify-content-center  ">
-          <div class="row pt-5 bg-dark mb-3 h-80 border-linear" style="max-width: 58rem;">
+          <div class="row pt-5 bg-dark mb-3 h-80 border-linear" style="max-width: 60rem;">
             <div   class="row ">
               <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Creer une enchère</p>
             </div>
@@ -133,7 +133,7 @@ else {
           </div>
       </div>
       <div id="ourauction"  class="bkgImg row justify-content-center  ">
-        <div class="row pt-5 bg-dark mb-3 h-80 border-linear " style="max-width: 60rem;">
+        <div class="row pt-5 bg-dark mb-3  border-linear " style="max-width: 60rem;">
           <div   class="row ">
             <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Vos Annonces</p>
           </div>
