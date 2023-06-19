@@ -39,6 +39,7 @@ use auction\AuctionDetails;
       </div>
       <!-- Colonne de droite -->
       <div class="col-10">
+      <div class="row placeholder-lg"></div>
         <div class="row">
           <p class="colorWhite d-flex justify-content-center">Enchères Actives</p>
         </div>
@@ -47,6 +48,7 @@ use auction\AuctionDetails;
           <?php
             AuctionDetails::getAuctionSimple();
           ?>
+          <div class="row placeholder-lg"></div>
         </div>
 
       </div>
