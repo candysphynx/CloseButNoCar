@@ -63,7 +63,7 @@ class User //extends UserLogIn
 
         $pdw = sha1($this->user_pdw);
 
-        $query = $dbh->prepare("SELECT `id` FROM `user` WHERE `user_email` = ? && `user_pdw` = '$pdw' ");
+        $query = $dbh->prepare("SELECT `id` FROM `user` WHERE `user_email` = ? AND `user_pdw` = '$pdw' ");
 
         $query->execute([$this->user_email ]);
 
@@ -99,7 +99,7 @@ class User //extends UserLogIn
                     <p>Age :
                         <?php echo $userInfo['user_age']; ?>
                     </p>
-                    <p>Mot de passe : <input class="noBack" type="password" value="<?php echo $userInfo['user_pdw']; ?>" disabled />
+                    <p>Mot de passe : <input class="noBack" type="password" value="Encrypted..." disabled />
                     </p>
                     <p>Nombre d'enchères :
                         <?php echo $userInfo['nbr_bids']; ?>

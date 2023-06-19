@@ -13,27 +13,26 @@ if(isConnected()) {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    if ($_POST["user_email"] == "" || $_POST["user_pdw"] == "") {
+    if ($_POST["user_age"] == "" || $_POST["user_email"] == "" || $_POST["user_pdw"] == "") {
       ?>
       <div class="flex align column colorWhite">
         <p>Merci de remplir tout les champs....</p>
       </div>
       <?php
     }
-    else{
-    $connectUser = new User(
-      null,
-      null,
+      else{
+    $newUser = new User(
+      $_POST["username"],
+      $_POST["user_age"],
+      file_get_contents($_FILES['user_img']['tmp_name']),
       $_POST["user_email"],
-      $_POST["user_pdw"],
-      null
+      $_POST["user_pdw"]
     );
-    $connectUser->LoggedUser();
-    header('Location: home.php');
-    exit();
+    $newUser->set();
+
   }
-  
 }
+
 
 ?>
 <!doctype html>
@@ -71,38 +70,55 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="row placeholder-lg"></div>
         <!-- Content Cards -->
         <div class="bkgImg row justify-content-center  ">
-          <!-- Sign-in form -->
-          <div class="row pt-2 bg-dark mb-3 border-linear h-60 " style="max-width: 58rem;">
+          <!-- Inscription form -->
+          
+            <div class="row sm-2 bg-dark mb-3 border-linear h-80" style="max-width: 58rem;">
             <form action="" method="POST" enctype="multipart/form-data">
-            
               <div class="mb-3 row ">
-                <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Connexion</p>
+              <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Inscription</p>
               </div>
               <div class="mb-3 row ">
                 <label for="staticEmail"
                   class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Email</label>
                 <div class="col-sm-8">
-                  <input type="email" class="form-control align-item-left" name="user_email" id="inputEmailLogin">
+                  <input type="email" name="user_email" class="form-control align-item-left" id="inputEmailRegister">
                 </div>
               </div>
-              
               <div class="mb-3 row">
                 <label for="inputPassword"
                   class=" col-sm-2 col-form-label colorWhite raleway400 align-item-left">Password</label>
                 <div class="col-sm-8">
-                  <input type="password" name="user_pdw" class="form-control align-item-left" id="inputPasswordLogin">
+                  <input type="password" name="user_pdw" class="form-control align-item-left" id="inputPasswordRegister">
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="inputUsername"
+                  class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Username</label>
+                <div class="col-sm-8">
+                  <input type="text" name="username" class="form-control align-item-left" id="inputUsername">
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="inputAge" class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Âge</label>
+                <div class="col-sm-8">
+                  <input type="form-control" name="user_age" class="form-control align-item-left" id="inputAge">
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="image" class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Photo de Profil</label>
+                <div class="col-sm-4">
+                  <input class="form-control align-item-left" type="file" accept=".jpg" id="image" name="image">
                 </div>
               </div>
               <div class="row justify-content-center ">
                 <div class="col-auto">
                   <button type="submit" class="btn btn-primary mb-3">Valider</button>
-                </div>
+                    </div>
               </div>
             </form>
             <div class="col-sm-8">
-                  <a class="colorWhite" href="register.php">Pas encore Inscrit? Cliquez ici!</a>
+                  <a class="colorWhite" href="authentication.php">Déja un compte? Cliquez ici!</a>
             </div>
-          </div>
         </div>
       </div>
 
