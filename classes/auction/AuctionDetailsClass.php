@@ -12,6 +12,8 @@ class AuctionDetails extends Auction {
     public $obj_price;
     public $obj_descr;
     public $obj_date;
+    public $last_user_auction;
+    public $auction_price;
 
     public function __construct($obj_model, $obj_brand, $obj_img, $obj_year, $obj_price, $obj_descr, $obj_date)
     {parent::__construct($obj_model,$obj_brand,$obj_img);
@@ -59,7 +61,6 @@ class AuctionDetails extends Auction {
                                     <p>MODÈLE : <?php echo $row['obj_model'];?></p>
                                     <p>ANNEE : <?php echo $row['obj_year'];?></p>
                                     <p>PRIX : <?php echo $row['obj_price'];?> €</p>
-                                    <p>ENCHÈRE EN COURS :</p>
                                 </div>
                             </div>
                             <div class="row d-flex border description">
@@ -67,18 +68,24 @@ class AuctionDetails extends Auction {
                                 <p><?php echo $row['obj_descr'];?></p>
                                 <div class="card bg-dark">
                                     <?php
+                                    $auction = $row['obj_price'] + $row['auction_price'] ;
                                     if(isConnected()){
                                     ?>
-                                    <div class="card-body">
-                                        <p class="colorWhite">Nous vous proposons d'enchérir sur ce sublime Véhicule! </p>
-                                        <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']?>"/>
-                                        <input type="hidden" name="object_id" value=" <?php echo $id?>"/>
-                                        <input type="hidden" name="auction_date" value="<?php echo date("Y-m-d H:i:s") ?>"/>
-                                        <input type="number" name="auction_price" minlength="2">
-                                        <button type="button" class="btn btn-primary"
-                                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Valider</button>
+                                    <div class="row">
+                                        <div class="card-body">
+                                            <p class="colorWhite">Nous vous proposons d'enchérir sur ce sublime Véhicule! </p>
+                                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id'];?>"/>
+                                            <input type="hidden" name="object_id" value=" <?php echo $id;?>"/>
+                                            <input type="hidden" name="auction_date" value="<?php echo date("Y-m-d H:i:s"); ?>"/>
+                                            <input type="number" name="auction_price" minlength="2">
+                                            <button type="button" class="btn btn-primary"
+                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Valider</button>
+                                        </div>
+                                        <div class="col colorWhite">
+                                            <p> Aujourd'hui, <?php echo $row['last_user_auction'];?> a enchéri. Dernière enchère : <?php echo $row['auction_price'];?> €  </p>
+                                            <p>Le montant Total de l'enchère est de <?php echo $auction;?> €.  </p>
+                                        <div>
                                     </div>
-
                                     <?php
                                     }
                                     ?>
