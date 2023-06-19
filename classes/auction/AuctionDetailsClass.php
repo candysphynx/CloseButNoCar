@@ -1,9 +1,8 @@
 <?php
 
 namespace auction;
-
-include_once __DIR__ . "/../DataBase.php";
-include_once __DIR__ . "/Auction.php";
+include_once __DIR__."/../DataBase.php";
+include_once __DIR__."/Auction.php";
 use Database;
 use PDO;
 

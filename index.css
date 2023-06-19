@@ -32,14 +32,13 @@ body {
 .user {
     display: flex;
     flex-direction: column;
-    height: 400px;
-    width: 300px;
-    align-items: left;
+    height: 100%;
+    align-items: center;
     justify-content: start;
     padding: 1%;
     box-sizing: border-box;
-    margin-left: 2%;
     margin-top: 0;
+    padding-left: 0;
     background-color: #f8c27033;
     border-radius: 4px;
 }
@@ -95,7 +94,6 @@ body {
     flex-direction: column;
     align-items: flex-start;
     align-content: center;
-    height: 70%;
     justify-content: space-evenly;
     border-left: 1px solid white;
     padding: 2%;
@@ -104,8 +102,8 @@ body {
 
 .profilePicture {
     border-radius: 50px;
-    height: 70px;
-    width: 67px;
+    height: 100px;
+    width: 100px;
     border: #382d2a 1px solid;
     margin: 10px;
 }
@@ -229,4 +227,16 @@ body {
 
 #modify_user {
     display: none;
+}
+
+.noBack {
+    color: white;
+    background-color: #26232300;
+    border: 0px;
+}
+
+.noBack {
+    color: white;
+    background-color: #26232300;
+    border: 0px;
 }
