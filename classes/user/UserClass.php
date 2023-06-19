@@ -4,8 +4,6 @@ namespace user;
 
 include_once __DIR__ . "/../DataBase.php";
 
-include_once __DIR__ . "/../../page/user.php";
-
 use Database;
 
 use PDO;
@@ -40,10 +38,11 @@ class User //extends UserLogIn
     {
 
         $dbh = Database::createDBConnection();
+        $pdw = sha1($this->user_pdw);
 
         $query = $dbh->prepare("INSERT INTO `user` (`username`, `user_age`, `user_email`, `user_pdw`, `user_img`)");
 
-        $query->execute(array(":username" => $this->username, ":user_age" => $this->user_age, ":user_email" => $this->user_email, ":user_pdw" => $this->user_pdw, ":user_img" => $this->user_img));
+        $query->execute(array(":username" => $this->username, ":user_age" => $this->user_age, ":user_email" => $this->user_email, ":user_pdw" => $pdw, ":user_img" => $this->user_img));
     }
 
 
@@ -64,9 +63,9 @@ class User //extends UserLogIn
 
         $pdw = sha1($this->user_pdw);
 
-        $query = $dbh->prepare("SELECT `user` WHERE `user_email` = ?, `user_pdw` = ? ");
+        $query = $dbh->prepare("SELECT `id` FROM `user` WHERE `user_email` = ? && `user_pdw` = '$pdw' ");
 
-        $query->execute([$this->user_email, $pdw]);
+        $query->execute([$this->user_email ]);
 
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $userlogin) {

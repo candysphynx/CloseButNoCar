@@ -1,9 +1,15 @@
 <?php
 session_start();
-include_once __DIR__ . '/../auth/sessions_management.php';
-include_once __DIR__ . '../classes/user/UserClass.php';
+include_once __DIR__ . "/../auth/sessions_management.php";
+include_once __DIR__ . "/../classes/user/UserClass.php";
 
 use user\User as User;
+if(isConnected()) {
+  destroySession();
+  header('Location: home.php');
+    exit();
+}
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   if ($_POST["user_email"] == "" || $_POST["user_pdw"] == "") {
@@ -67,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <div class="container-fluid bkgBrown">
     <!-- Menu -->
     <div class="row sticky-top">
-      <?php
+    <?php
       include __DIR__ . "/../layout/displaymenu.php";
       ?>
     </div>
@@ -90,14 +96,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <label for="staticEmail"
                   class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Email</label>
                 <div class="col-sm-8">
-                  <input type="email" class="form-control align-item-left" id="inputEmailLogin">
+                  <input type="email" class="form-control align-item-left" name="user_email" id="inputEmailLogin">
                 </div>
               </div>
               <div class="mb-5 row">
                 <label for="inputPassword"
                   class=" col-sm-2 col-form-label colorWhite raleway400 align-item-left">Password</label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control align-item-left" id="inputPasswordLogin">
+                  <input type="password" name="user_pdw" class="form-control align-item-left" id="inputPasswordLogin">
                 </div>
               </div>
               <div class="row justify-content-center ">
@@ -118,27 +124,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <label for="staticEmail"
                   class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Email</label>
                 <div class="col-sm-8">
-                  <input type="email" class="form-control align-item-left" id="inputEmailRegister">
+                  <input type="email" name="user_email" class="form-control align-item-left" id="inputEmailRegister">
                 </div>
               </div>
               <div class="mb-5 row">
                 <label for="inputPassword"
                   class=" col-sm-2 col-form-label colorWhite raleway400 align-item-left">Password</label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control align-item-left" id="inputPasswordRegister">
+                  <input type="password" name="user_pdw" class="form-control align-item-left" id="inputPasswordRegister">
                 </div>
               </div>
               <div class="mb-5 row">
                 <label for="inputUsername"
                   class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Username</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control align-item-left" id="inputUsername">
+                  <input type="text" name="username" class="form-control align-item-left" id="inputUsername">
                 </div>
               </div>
               <div class="mb-5 row">
                 <label for="inputAge" class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Âge</label>
                 <div class="col-sm-8">
-                  <input type="form-control" class="form-control align-item-left" id="inputAge">
+                  <input type="form-control" name="user_age" class="form-control align-item-left" id="inputAge">
                 </div>
               </div>
               <div class="mb-5 row">
