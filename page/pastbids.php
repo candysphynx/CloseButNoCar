@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once __DIR__."/../auth/sessions_management.php";
+include_once __DIR__ . "/../auth/sessions_management.php";
 ?>
 <!doctype html>
 <html lang="fr">
@@ -26,11 +26,11 @@ include_once __DIR__."/../auth/sessions_management.php";
   <div class="container-fluid bkgBrown">
     <!-- Menu -->
     <div class="row sticky-top">
-    <?php
-    include __DIR__."/../layout/displaymenu.php";
-    ?>
+      <?php
+      include __DIR__ . "/../layout/displaymenu.php";
+      ?>
     </div>
-  
+
 
     <!-- Body de Auction Details -->
     <div class="row">

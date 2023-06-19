@@ -16,7 +16,8 @@ body {
 .colorWhite {
     color: white;
 }
-.colorRed{
+
+.colorRed {
     color: red;
 }
 
@@ -198,30 +199,44 @@ body {
     padding: 12px;
     box-sizing: content-box;
 }
-.imgAuction{
+
+.imgAuction {
     width: 500px;
     height: 300px;
 }
-.imgcard{
+
+.imgcard {
     min-height: 150px;
 }
-.imgcard2{
+
+.imgcard2 {
     min-height: 103px;
 }
+
 #createauction {
-    display:none; 
+    display: none;
 }
+
 #btnClick2 {
-    display:none; 
+    display: none;
 }
+
 #ourauction {
-    display:flex; 
+    display: flex;
 }
+
 #modify_user {
-    display:none; 
+    display: none;
 }
-.noBack{
+
+.noBack {
     color: white;
     background-color: #26232300;
-    border:0px;
+    border: 0px;
+}
+
+.noBack {
+    color: white;
+    background-color: #26232300;
+    border: 0px;
 }
