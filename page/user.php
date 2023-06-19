@@ -10,6 +10,7 @@ if (isConnected() == False) {
 }
 
 include_once __DIR__ . "/../classes/user/UserClass.php";
+include_once __DIR__ . "\../auth/sessions_management.php";
 include_once __DIR__ . "/../classes/DataBase.php";
 
 use User;

@@ -3,86 +3,125 @@
 namespace user;
 
 include_once __DIR__ . "/../DataBase.php";
+
 include_once __DIR__ . "/../../page/user.php";
+
 use Database;
+
 use PDO;
 
 class User
 {
+
     public $id;
+
     public $username;
+
     public $user_age;
+
     public $user_email;
-    public $user_pwd;
+
+    public $user_pdw;
+
     public $user_img;
+
     public $result; // Résultat du stockage des informations du formulaire
 
-    public function __construct($username, $user_age, $user_email, $user_pwd, $user_img)
+    public function __construct($username, $user_age, $user_email, $user_pdw, $user_img)
     {
+
         $this->username = $username;
+
         $this->user_age = $user_age;
+
         $this->user_email = $user_email;
-        $this->user_pwd = $user_pwd;
+
+        $this->user_pdw = $user_pdw;
+
         $this->user_img = $user_img;
+
     }
+
     public function set()
     {
+
         $dbh = Database::createDBConnection();
 
-        $query = $dbh->prepare("INSERT INTO `user` (`username`, `user_age`, `user_email`, `user_pwd`, `user_img`)");
+        $query = $dbh->prepare("INSERT INTO `user` (`username`, `user_age`, `user_email`, `user_pdw`, `user_img`)");
 
-        $query->execute(array(":username" => $this->username, ":user_age" => $this->user_age, ":user_email" => $this->user_email, ":user_pwd" => $this->user_pwd, ":user_img" => $this->user_img));
+        $query->execute(array(":username" => $this->username, ":user_age" => $this->user_age, ":user_email" => $this->user_email, ":user_pwd" => $this->user_pdw, ":user_img" => $this->user_img));
+
     }
 
-    public function __get($username)
+    public function __update($id)
     {
+
         $dbh = Database::createDBConnection();
 
-        $query = $dbh->prepare("SELECT * FROM `user` WHERE `username =  ?`");
+        $query = $dbh->prepare("UPDATE `user` SET `username` = ?,`user_age` = ?, `user_email` = ?, `user_pdw` = ?, `user_img` = ? WHERE `user`.`id` = $id");
 
-        $query->execute(array(":username" => $this->username, ":user_age" => $this->user_age, ":user_email" => $this->user_email, ":user_pwd" => $this->user_pwd, ":user_img" => $this->user_img));
+        $query->execute([$this->username, $this->user_age, $this->user_email, $this->user_pdw, $this->user_img,]);
+
     }
 
-    public function __update()
+    public static function displayUserInfos($id)
     {
+
         $dbh = Database::createDBConnection();
 
-        $query = $dbh->prepare("UPDATE `username` AND `user_email` AND `user_img` FROM `user` WHERE `username =  ?`");
-
-        $query->execute(array(":username" => $this->username, ":user_email" => $this->user_email, ":user_img" => $this->user_img));
-    }
-
-    public static function displayUserInfos()
-    {
-        $dbh = Database::createDBConnection();
-        $id = 1;
         $query = $dbh->prepare("SELECT * FROM `user` WHERE `id` = ?");
-        $query->execute([$id]);
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($result as $userInfo) {
 
-            echo "<div class=\"user\">";
-            echo "<div >";
-            echo '<img class= "profilePicture" src = "data:image/png;base64,' . base64_encode($userInfo['user_img']) . '" width = "70px"  height = "70px"/>';
-            echo "
+        $query->execute([$id]);
+
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($result as $userInfo) { ?>
+
+            <div class=user>
+
+                <div>
+
+                    <img class="profilePicture"
+                        src=" <?php echo 'data:image/jpg;base64,' . base64_encode($userInfo['user_img']) ?>" />
+
+                </div>
+
+                <div class=username>
+
+                    <h2 class=hUsername><?php echo $userInfo['username']; ?></h2>
+
+                </div>
+
+                <div class="userInfo">
+
+                    <p>E-mail :
+                        <?php echo $userInfo['user_email']; ?>
+                    </p>
+
+                    <p>Age :
+                        <?php echo $userInfo['user_age']; ?>
+                    </p>
+
+                    <p>Mot de passe : <input class="noBack" type="password" value="<?php echo $userInfo['user_pdw']; ?>" disabled />
+                    </p>
+
+                    <p>Nombre d'enchères :
+                        <?php echo $userInfo['nbr_bids']; ?>
+                    </p>
+
+                    <p>Nombre d'annonces :
+                        <?php echo $userInfo['nbr_object']; ?>
+                    </p>
+
+
+
+                </div>
+
             </div>
-            <div class=\"username\">
-            <h2 class=\"hUsername\">";
-            echo $userInfo['username'];
-            echo "</h2>
-            </div>
-            <div class=\"userInfo\">
-            <p>Nombre d'enchères :";
-            echo $userInfo['nbr_bids'];
-            echo "</p>
-            <p>Nombre d'annonces :";
-            echo $userInfo['nbr_object'];
-            echo "</p>
-            <p>E-mail :";
-            echo $userInfo['user_email'];
-            echo "
-            </div>
-          </div>";
+            <?php
+
         }
+
     }
+
 } ?>

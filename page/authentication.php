@@ -1,18 +1,32 @@
 <?php
 session_start();
 include_once __DIR__ . "/../auth/sessions_management.php";
+include_once __DIR__ . "/../classes/user/UserClass.php";
+include_once __DIR__ . "/../DataBase.php";
 
-if (isset($_POST['button1'])) {
-  createUserSession(3);
-  header('Location: home.php');
-  exit();
-}
-if (isset($_POST['button2'])) {
-  destroySession();
-  header('Location: home.php');
-  exit();
-}
+use user\User;
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  if ($_POST["username"] == "" || $_POST["user_age"] == "" || $_POST["user_email"] == "" || $_POST["user_pdw"] == "" || $_POST["user_img"] == "") {
+    ?>
+    <div class="flex align column">
+      <p>Merci de remplir tout les champs....</p>
+    </div>
+    <?php
+  } else {
+
+    $newUser = new User(
+      $_POST["username"],
+      $_POST["user_age"],
+      file_get_contents($_FILES['user_img']['tmp_name']),
+      $_POST["user_email"],
+      $_POST["user_pdw"]
+    );
+
+    $newUser->set();
+
+  }
+}
 
 ?>
 <!doctype html>

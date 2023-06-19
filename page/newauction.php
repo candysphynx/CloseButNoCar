@@ -5,6 +5,7 @@ use auction\AuctionDetails;
 session_start();
 include_once __DIR__ . "/../auth/sessions_management.php";
 include_once __DIR__ . "/../classes/auction/AuctionDetailsClass.php";
+
 if (isConnected() == False) {
   header('Location: authentication.php');
   exit();
