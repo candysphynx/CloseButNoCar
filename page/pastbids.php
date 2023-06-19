@@ -1,11 +1,16 @@
 <?php
 session_start();
+include_once __DIR__ . "/../classes/auction/AuctionDetailsClass.php";
 include_once __DIR__ . "/../auth/sessions_management.php";
+use auction\AuctionDetails;
+
 ?>
+
 <!doctype html>
 <html lang="fr">
 
 <head>
+
   <meta charset="utf-8">
   <link rel="icon" href="/public/favico.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,16 +34,27 @@ include_once __DIR__ . "/../auth/sessions_management.php";
       <?php
       include __DIR__ . "/../layout/displaymenu.php";
       ?>
+
     </div>
 
-
-    <!-- Body de Auction Details -->
+    <!-- Body de l'index -->
     <div class="row">
-      <div class="col">
-        <div class="bkgImg row">
-
+      <!-- Colonne de gauche -->
+      <div class="col-2">
+      </div>
+      <!-- Colonne de droite -->
+      <div class="col-10">
+        <div class="row placeholder-lg"></div>
+        <div class="row">
+          <p class="colorWhite d-flex justify-content-center">Enchères Expirées</p>
         </div>
-        <!-- <img src=""> -->
+        <!-- Content Cards -->
+        <div class="bkgImg row">
+          <?php
+          AuctionDetails::getAuctionExpired();
+          ?>
+          <div class="row placeholder-lg"></div>
+        </div>
 
       </div>
     </div>

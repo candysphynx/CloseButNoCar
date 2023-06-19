@@ -40,9 +40,9 @@ class User //extends UserLogIn
         $dbh = Database::createDBConnection();
         $pdw = sha1($this->user_pdw);
 
-        $query = $dbh->prepare("INSERT INTO `user` (`username`, `user_age`, `user_email`, `user_pdw`, `user_img`)");
+        $query = $dbh->prepare("INSERT INTO `user` (`username`, `user_age`, `user_email`, `user_pdw`, `user_img`) VALUES (?,?,?,?,?)");
 
-        $query->execute(array(":username" => $this->username, ":user_age" => $this->user_age, ":user_email" => $this->user_email, ":user_pdw" => $pdw, ":user_img" => $this->user_img));
+        $query->execute([$this->username, $this->user_age, $this->user_email, $pdw, $this->user_img,]);
     }
 
 

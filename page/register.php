@@ -24,9 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $newUser = new User(
       $_POST["username"],
       $_POST["user_age"],
-      file_get_contents($_FILES['user_img']['tmp_name']),
       $_POST["user_email"],
-      $_POST["user_pdw"]
+      $_POST["user_pdw"],
+      file_get_contents($_FILES['image']['tmp_name'])
     );
     $newUser->set();
 
