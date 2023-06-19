@@ -1,18 +1,44 @@
 <?php
 session_start();
-include_once __DIR__ . "\..\auth\sessions_management.php";
+include_once __DIR__ . '/../auth/sessions_management.php';
+include_once __DIR__ . '../classes/user/UserClass.php';
 
-if (isset($_POST['button1'])) {
-  createUserSession(1);
-  header('Location: home.php');
-  exit();
-}
-if (isset($_POST['button2'])) {
-  destroySession();
-  header('Location: home.php');
-  exit();
-}
+use user\User as User;
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  if ($_POST["user_email"] == "" || $_POST["user_pdw"] == "") {
+    ?>
+    <div class="flex align column">
+      <p>Merci de remplir tout les champs....</p>
+    </div>
+    <?php
+  } else if (isset($_POST['btnLogin'])) {
+    $connectUser = new User(
+      "",
+      "",
+      $_POST["user_email"],
+      $_POST["user_pdw"],
+      ""
+    );
+    $connectUser->LoggedUser();
+  }
+  if ($_POST["user_age"] == "" || $_POST["user_email"] == "" || $_POST["user_pdw"] == "") {
+    ?>
+    <div class="flex align column">
+      <p>Merci de remplir tout les champs....</p>
+    </div>
+    <?php
+  } else if (isset($_POST['btnRegister'])) {
+    $newUser = new User(
+      $_POST["username"],
+      $_POST["user_age"],
+      file_get_contents($_FILES['user_img']['tmp_name']),
+      $_POST["user_email"],
+      $_POST["user_pdw"]
+    );
+    $newUser->set();
+  }
+}
 
 ?>
 <!doctype html>
@@ -39,7 +65,7 @@ if (isset($_POST['button2'])) {
     <!-- Menu -->
     <div class="row sticky-top">
       <?php
-      include __DIR__ . "\..\layout\displaymenu.php";
+      include __DIR__ . "/../layout/displaymenu.php";
       ?>
     </div>
 
@@ -51,74 +77,81 @@ if (isset($_POST['button2'])) {
         <!-- Content Cards -->
         <div class="bkgImg row justify-content-center  ">
           <!-- Sign-in form -->
-          <div class="row pt-2 bg-dark mb-3 border-linear " style="max-width: 60rem;">
-            <div class="mb-5 row ">
-              <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Connexion</p>
-            </div>
-            <div class="mb-5 row ">
-              <label for="staticEmail"
-                class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Email</label>
-              <div class="col-sm-8">
-                <input type="email" class="form-control align-item-left" id="inputEmail">
+          <form action="" method="POST" enctype="multipart/form-data">
+            <div class="row pt-2 bg-dark mb-3 border-linear " style="max-width: 60rem;">
+              <div class="mb-5 row ">
+                <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Connexion</p>
+              </div>
+              <div class="mb-5 row ">
+                <input type="hidden" name="action" value="login">
+                <label for="staticEmail"
+                  class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Email</label>
+                <div class="col-sm-8">
+                  <input type="email" class="form-control align-item-left" id="inputEmailLogin">
+                </div>
+              </div>
+              <div class="mb-5 row">
+                <label for="inputPassword"
+                  class=" col-sm-2 col-form-label colorWhite raleway400 align-item-left">Password</label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control align-item-left" id="inputPasswordLogin">
+                </div>
+              </div>
+              <div class="row justify-content-center ">
+                <div class="col-auto">
+                  <button type="submit" class="btn btn-primary mb-3" name="btnLogin" value="login">Valider</button>
+                </div>
               </div>
             </div>
-            <div class="mb-5 row">
-              <label for="inputPassword"
-                class=" col-sm-2 col-form-label colorWhite raleway400 align-item-left">Password</label>
-              <div class="col-sm-8">
-                <input type="password" class="form-control align-item-left" id="inputPassword">
-              </div>
-            </div>
-            <div class="row justify-content-center ">
-              <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3">Valider</button>
-              </div>
-            </div>
-          </div>
+          </form>
           <!-- Inscription form -->
-          <div class="row sm-2 bg-dark mb-3 border-linear" style="max-width: 60rem;">
-            <div class="mb-5 row ">
-              <p class="colorWhite raleway400 fs40 justify-content-center">Inscription</p>
-            </div>
-            <div class="mb-5 row ">
-              <label for="staticEmail"
-                class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Email</label>
-              <div class="col-sm-8">
-                <input type="email" class="form-control align-item-left" id="inputEmail">
+          <form action="" method="POST" enctype="multipart/form-data">
+            <div class="row sm-2 bg-dark mb-3 border-linear" style="max-width: 60rem;">
+              <div class="mb-5 row ">
+                <p class="colorWhite raleway400 fs40 justify-content-center">Inscription</p>
+              </div>
+              <div class="mb-5 row ">
+                <input type="hidden" name="action" value="register">
+                <label for="staticEmail"
+                  class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Email</label>
+                <div class="col-sm-8">
+                  <input type="email" class="form-control align-item-left" id="inputEmailRegister">
+                </div>
+              </div>
+              <div class="mb-5 row">
+                <label for="inputPassword"
+                  class=" col-sm-2 col-form-label colorWhite raleway400 align-item-left">Password</label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control align-item-left" id="inputPasswordRegister">
+                </div>
+              </div>
+              <div class="mb-5 row">
+                <label for="inputUsername"
+                  class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Username</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control align-item-left" id="inputUsername">
+                </div>
+              </div>
+              <div class="mb-5 row">
+                <label for="inputAge" class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Âge</label>
+                <div class="col-sm-8">
+                  <input type="form-control" class="form-control align-item-left" id="inputAge">
+                </div>
+              </div>
+              <div class="mb-5 row">
+                <label for="image" class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Image</label>
+                <div class="col-sm-4">
+                  <input class="form-control align-item-left" type="file" accept=".jpg" id="image" name="image">
+                </div>
+              </div>
+              <div class="row justify-content-center ">
+                <div class="col-auto">
+                  <button type="submit" class="btn btn-primary mb-3" value="register"
+                    name="btnRegister">Valider</button>
+                </div>
               </div>
             </div>
-            <div class="mb-5 row">
-              <label for="inputPassword"
-                class=" col-sm-2 col-form-label colorWhite raleway400 align-item-left">Password</label>
-              <div class="col-sm-8">
-                <input type="password" class="form-control align-item-left" id="inputPassword">
-              </div>
-            </div>
-            <div class="mb-5 row">
-              <label for="inputUsername"
-                class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Username</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control align-item-left" id="inputUsername">
-              </div>
-            </div>
-            <div class="mb-5 row">
-              <label for="inputAge" class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Âge</label>
-              <div class="col-sm-8">
-                <input type="form-control" class="form-control align-item-left" id="inputAge">
-              </div>
-            </div>
-            <div class="mb-5 row">
-              <label for="image" class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Image</label>
-              <div class="col-sm-4">
-                <input class="form-control align-item-left" type="file" accept=".jpg" id="image" name="image">
-              </div>
-            </div>
-            <div class="row justify-content-center ">
-              <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3">Valider</button>
-              </div>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
 

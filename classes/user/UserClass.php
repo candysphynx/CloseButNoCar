@@ -10,7 +10,7 @@ use Database;
 
 use PDO;
 
-class User
+class User //extends UserLogIn 
 {
 
     public $id;
@@ -29,9 +29,7 @@ class User
     {
 
         $this->username = $username;
-
         $this->user_age = $user_age;
-
         $this->user_email = $user_email;
         $this->user_pdw = $user_pdw;
         $this->user_img = $user_img;
@@ -45,7 +43,7 @@ class User
 
         $query = $dbh->prepare("INSERT INTO `user` (`username`, `user_age`, `user_email`, `user_pdw`, `user_img`)");
 
-        $query->execute(array(":username" => $this->username, ":user_age" => $this->user_age, ":user_email" => $this->user_email, ":user_pwd" => $this->user_pdw, ":user_img" => $this->user_img));
+        $query->execute(array(":username" => $this->username, ":user_age" => $this->user_age, ":user_email" => $this->user_email, ":user_pdw" => $this->user_pdw, ":user_img" => $this->user_img));
     }
 
 
@@ -57,6 +55,18 @@ class User
         $query = $dbh->prepare("UPDATE `user` SET `username` = ?,`user_age` = ?, `user_email` = ?, `user_pdw` = ?, `user_img` = ? WHERE `user`.`id` = $id");
 
         $query->execute([$this->username, $this->user_age, $this->user_email, $this->user_pdw, $this->user_img,]);
+    }
+
+    public function LoggedUser()
+    {
+
+        $dbh = Database::createDBConnection();
+
+        $pdw = sha1($this->user_pdw);
+
+        $query = $dbh->prepare("SELECT `user` WHERE `user_email` = ?, `user_pdw` = ? ");
+
+        $query->execute([$this->user_email, $pdw]);
     }
 
     public static function displayUserInfos($id)

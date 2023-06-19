@@ -63,13 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $("#modify_user").css("display", "flex");
       })
     });
-
-  </script>
-  $(document).ready(function() {
-  $("#edit").click(function() {
-  $("#modify_user").toggle();})
-  });
-
   </script>
 </head>
 
@@ -79,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- Menu -->
     <div class="row sticky-top">
       <?php
-      include __DIR__ . "\..\layout\displaymenu.php";
+      include __DIR__ . "/../layout/displaymenu.php";
       ?>
     </div>
     <!-- Body du profil -->
