@@ -67,6 +67,12 @@ class User //extends UserLogIn
         $query = $dbh->prepare("SELECT `user` WHERE `user_email` = ?, `user_pdw` = ? ");
 
         $query->execute([$this->user_email, $pdw]);
+
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $userlogin) {
+
+            createUserSession($userlogin['id']);
+        }
     }
 
     public static function displayUserInfos($id)

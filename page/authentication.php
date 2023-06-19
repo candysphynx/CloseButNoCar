@@ -21,6 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       ""
     );
     $connectUser->LoggedUser();
+    header('Location: home.php');
+    exit();
   }
   if ($_POST["user_age"] == "" || $_POST["user_email"] == "" || $_POST["user_pdw"] == "") {
     ?>
@@ -37,6 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $_POST["user_pdw"]
     );
     $newUser->set();
+
   }
 }
 
