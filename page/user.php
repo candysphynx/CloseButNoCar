@@ -1,12 +1,15 @@
 <?php
 
 namespace user;
+
 session_start();
-include_once __DIR__."\..\auth\sessions_management.php";
-if( isConnected() == False) { header('Location: authentication.php'); exit();  }
+include_once __DIR__ . "/../auth/sessions_management.php";
+if (isConnected() == False) {
+  header('Location: authentication.php');
+  exit();
+}
 
 include_once __DIR__ . "/../classes/user/UserClass.php";
-include_once __DIR__."\..\auth\sessions_management.php";
 include_once __DIR__ . "/../classes/DataBase.php";
 
 use User;
@@ -31,12 +34,13 @@ use User;
     rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script type="text/javascript">
-       $(document).ready(function() {
-        $("#edit").click(function() {
-                $("#modify_user").css("display", "flex");}) 
-        });
-                
-    </script>
+    $(document).ready(function () {
+      $("#edit").click(function () {
+        $("#modify_user").css("display", "flex");
+      })
+    });
+
+  </script>
 </head>
 
 <body>
@@ -44,9 +48,9 @@ use User;
   <div class="container-fluid bkgBrown">
     <!-- Menu -->
     <div class="row sticky-top">
-    <?php
-    include __DIR__."\..\layout\displaymenu.php";
-    ?>
+      <?php
+      include __DIR__ . "/../layout/displaymenu.php";
+      ?>
     </div>
 
     <!-- Body du profil -->
@@ -56,20 +60,20 @@ use User;
           <div class="btnEdit">
             <button type="button" id="edit" class="btn btn-outline-primary">EDIT</button>
           </div>
-            <div class="row">
-              <!-- Col de Gauche -->
-              <div class="col-6">
-            <?php
-            user\User::displayUserInfos(); ?>
-              </div>
-              <!-- Col de Droite -->
-              <div class="col-6">
-                <form id="modify_user">
-                  <input type="text"/>
-                  <input type="text"/>
-                </form>
-              </div>
+          <div class="row">
+            <!-- Col de Gauche -->
+            <div class="col-6">
+              <?php
+              user\User::displayUserInfos(); ?>
             </div>
+            <!-- Col de Droite -->
+            <div class="col-6">
+              <form id="modify_user">
+                <input type="text" />
+                <input type="text" />
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>

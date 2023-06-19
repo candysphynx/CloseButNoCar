@@ -3,7 +3,7 @@
 
 abstract class Database
 {
-    const ADDRESS = "mysql:dbname=cbnc;host:localhost";
+    const ADDRESS = "mysql:dbname=cbnc;host=127.0.0.1;port=8889";
     const USER = "root";
     const PASSWORD = "root";
 
