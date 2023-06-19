@@ -4,6 +4,7 @@ namespace auction;
 include_once __DIR__."/../DataBase.php";
 include_once __DIR__."/Auction.php";
 use Database;
+use DateTime;
 use PDO;
 
 class AuctionDetails extends Auction {
@@ -44,29 +45,47 @@ class AuctionDetails extends Auction {
         foreach($result as $row) {
                     ?>
                     <div class="row">
-                <!-- Colonne de gauche -->
-                <div class="col-2 border mb-5">
-                </div>
-                <!-- Colonne de droite -->
-                <div class="col-10 border detailspage mb-5">
-                <div class="row d-flex details">
-                        <div class="col">
-                        <img class="imgAuction" src =" <?php echo 'data:image/jpg;base64,' . base64_encode($row['obj_img']);?>"/>
+                        <!-- Colonne de gauche -->
+                        <div class="col-2 border mb-5">
                         </div>
-                        <div class="col border detailsinfos">
-                        <p>MARQUE : <?php echo $row['obj_brand'];?></p>
-                        <p>MODÈLE : <?php echo $row['obj_model'];?></p>
-                        <p>ANNEE : <?php echo $row['obj_year'];?></p>
-                        <p>PRIX : <?php echo $row['obj_price'];?> €</p>
-                        <p>ENCHÈRE EN COURS :</p>
+                        <!-- Colonne de droite -->
+                        <div class="col-10 border detailspage mb-5">
+                            <div class="row d-flex details">
+                                <div class="col">
+                                    <img class="imgAuction" src =" <?php echo 'data:image/jpg;base64,' . base64_encode($row['obj_img']);?>"/>
+                                </div>
+                                <div class="col border detailsinfos">
+                                    <p>MARQUE : <?php echo $row['obj_brand'];?></p>
+                                    <p>MODÈLE : <?php echo $row['obj_model'];?></p>
+                                    <p>ANNEE : <?php echo $row['obj_year'];?></p>
+                                    <p>PRIX : <?php echo $row['obj_price'];?> €</p>
+                                    <p>ENCHÈRE EN COURS :</p>
+                                </div>
+                            </div>
+                            <div class="row d-flex border description">
+                                <p>DESCRIPTION :</p>
+                                <p><?php echo $row['obj_descr'];?></p>
+                                <div class="card bg-dark">
+                                    <?php
+                                    if(isConnected()){
+                                    ?>
+                                    <div class="card-body">
+                                        <p class="colorWhite">Nous vous proposons d'enchérir sur ce sublime Véhicule! </p>
+                                        <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']?>"/>
+                                        <input type="hidden" name="object_id" value=" <?php echo $id?>"/>
+                                        <input type="hidden" name="auction_date" value="<?php echo date("Y-m-d H:i:s") ?>"/>
+                                        <input type="number" name="auction_price" minlength="2">
+                                        <button type="button" class="btn btn-primary"
+                                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Valider</button>
+                                    </div>
+
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row d-flex border description">
-                        <p>DESCRIPTION :</p>
-                        <p><?php echo $row['obj_descr'];?></p>
-                    </div>
-                        </div>
-                </div>
             <?php
         }
         }
