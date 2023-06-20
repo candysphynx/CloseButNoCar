@@ -4,23 +4,23 @@ include_once __DIR__ . "/../auth/sessions_management.php";
 include_once __DIR__ . "/../classes/user/UserClass.php";
 
 use user\User as User;
-if(isConnected()) {
+
+if (isConnected()) {
   destroySession();
   header('Location: home.php');
-    exit();
+  exit();
 }
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    if ($_POST["user_age"] == "" || $_POST["user_email"] == "" || $_POST["user_pdw"] == "") {
-      ?>
-      <div class="flex align column colorWhite">
-        <p>Merci de remplir tout les champs....</p>
-      </div>
-      <?php
-    }
-      else{
+  if ($_POST["user_age"] == "" || $_POST["user_email"] == "" || $_POST["user_pdw"] == "") {
+    ?>
+    <div class="flex align column colorWhite">
+      <p>Merci de remplir tout les champs....</p>
+    </div>
+    <?php
+  } else {
     $newUser = new User(
       $_POST["username"],
       $_POST["user_age"],
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <div class="container-fluid bkgBrown">
     <!-- Menu -->
     <div class="row sticky-top">
-    <?php
+      <?php
       include __DIR__ . "/../layout/displaymenu.php";
       ?>
     </div>
@@ -71,11 +71,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!-- Content Cards -->
         <div class="bkgImg row justify-content-center  ">
           <!-- Inscription form -->
-          
-            <div class="row sm-2 bg-dark mb-3 border-linear h-80" style="max-width: 58rem;">
+
+          <div class="row sm-2 bg-dark mb-3 border-linear h-80" style="max-width: 58rem;">
             <form action="" method="POST" enctype="multipart/form-data">
               <div class="mb-3 row ">
-              <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Inscription</p>
+                <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Inscription</p>
               </div>
               <div class="mb-3 row ">
                 <label for="staticEmail"
@@ -88,7 +88,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <label for="inputPassword"
                   class=" col-sm-2 col-form-label colorWhite raleway400 align-item-left">Password</label>
                 <div class="col-sm-8">
-                  <input type="password" name="user_pdw" class="form-control align-item-left" id="inputPasswordRegister">
+                  <input type="password" name="user_pdw" class="form-control align-item-left"
+                    id="inputPasswordRegister">
                 </div>
               </div>
               <div class="mb-3 row">
@@ -105,35 +106,36 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
               </div>
               <div class="mb-3 row">
-                <label for="image" class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Photo de Profil</label>
+                <label for="image" class="col-sm-2 col-form-label colorWhite raleway400 align-item-left">Photo de
+                  Profil</label>
                 <div class="col-sm-4">
                   <input class="form-control align-item-left" type="file" accept=".jpg" id="image" name="image">
                 </div>
               </div>
               <div class="row justify-content-center ">
                 <div class="col-auto">
-                  <button type="submit" class="btn btn-primary mb-3">Valider</button>
-                    </div>
+                  <button type="submit" class="btnValidReg btn-primary mb-3">Valider</button>
+                </div>
               </div>
             </form>
             <div class="col-sm-8">
-                  <a class="colorWhite" href="authentication.php">Déja un compte? Cliquez ici!</a>
+              <a class="colorWhite" href="authentication.php">Déja un compte? Cliquez ici!</a>
             </div>
+          </div>
         </div>
-      </div>
 
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-      <footer class="fixed-bottom bg-dark d-flex justify-content-center colorWhite">
-        <p>Copyright CBNC</p>
-      </footer>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+          crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+          crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+          crossorigin="anonymous"></script>
+        <footer class="fixed-bottom bg-dark d-flex justify-content-center colorWhite">
+          <p>Copyright CBNC</p>
+        </footer>
 </body>
 
 </html>

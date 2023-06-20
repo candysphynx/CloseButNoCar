@@ -186,9 +186,11 @@ body {
 .h-80 {
     height: 80%;
 }
+
 .h-60 {
     height: 60%;
 }
+
 .border-linear {
     background: radial-gradient(circle at 100% 100%, #262323 0, #262323 1px, transparent 1px) 0% 0%/4px 4px no-repeat,
         radial-gradient(circle at 0 100%, #262323 0, #262323 1px, transparent 1px) 100% 0%/4px 4px no-repeat,
@@ -241,4 +243,104 @@ body {
     color: white;
     background-color: #26232300;
     border: 0px;
+}
+
+.btnValidCont {
+    display: flex;
+    height: 6vh;
+    width: 10vw;
+    background-image: linear-gradient(to right, #ff656e 0%, #FFEDBC 51%, #f8c270 100%);
+    padding: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 4px;
+    display: block;
+    border: none;
+    margin: 10px;
+}
+
+.btnValidCont:hover {
+    background-position: right center;
+    color: #382d2a;
+    text-decoration: none;
+    transition: 0.5s;
+    font-weight: 700;
+}
+
+.btnValidLog {
+    display: flex;
+    height: 6vh;
+    width: 10vw;
+    background-image: linear-gradient(to right, #ff656e 0%, #FFEDBC 51%, #f8c270 100%);
+    padding: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 4px;
+    display: block;
+    border: none;
+    margin: 10px;
+}
+
+.btnValidLog:hover {
+    background-position: right center;
+    color: #382d2a;
+    text-decoration: none;
+    transition: 0.5s;
+    font-weight: 700;
+}
+
+.btnValidReg {
+    display: flex;
+    height: 6vh;
+    width: 10vw;
+    background-image: linear-gradient(to right, #ff656e 0%, #FFEDBC 51%, #f8c270 100%);
+    padding: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 4px;
+    display: block;
+    border: none;
+    margin: 10px;
+}
+
+.btnValidReg:hover {
+    background-position: right center;
+    color: #382d2a;
+    text-decoration: none;
+    transition: 0.5s;
+    font-weight: 700;
+}
+
+.btnValidAuct {
+    display: flex;
+    height: 6vh;
+    width: 10vw;
+    background-image: linear-gradient(to right, #ff656e 0%, #FFEDBC 51%, #f8c270 100%);
+    padding: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 4px;
+    display: block;
+    border: none;
+    margin: 10px;
+}
+
+.btnValidAuct:hover {
+    background-position: right center;
+    color: #382d2a;
+    text-decoration: none;
+    transition: 0.5s;
+    font-weight: 700;
 }
