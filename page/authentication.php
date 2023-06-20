@@ -4,23 +4,23 @@ include_once __DIR__ . "/../auth/sessions_management.php";
 include_once __DIR__ . "/../classes/user/UserClass.php";
 
 use user\User as User;
-if(isConnected()) {
+
+if (isConnected()) {
   destroySession();
   header('Location: home.php');
-    exit();
+  exit();
 }
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    if ($_POST["user_email"] == "" || $_POST["user_pdw"] == "") {
-      ?>
-      <div class="flex align column colorWhite">
-        <p>Merci de remplir tout les champs....</p>
-      </div>
-      <?php
-    }
-    else{
+  if ($_POST["user_email"] == "" || $_POST["user_pdw"] == "") {
+    ?>
+    <div class="flex align column colorWhite">
+      <p>Merci de remplir tout les champs....</p>
+    </div>
+    <?php
+  } else {
     $connectUser = new User(
       null,
       null,
@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <?php
     }
   }
-  
+
 }
 
 ?>
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <div class="container-fluid bkgBrown">
     <!-- Menu -->
     <div class="row sticky-top">
-    <?php
+      <?php
       include __DIR__ . "/../layout/displaymenu.php";
       ?>
     </div>
@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           <!-- Sign-in form -->
           <div class="row pt-2 bg-dark mb-3 border-linear h-60 " style="max-width: 58rem;">
             <form action="" method="POST" enctype="multipart/form-data">
-            
+
               <div class="mb-3 row ">
                 <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Connexion</p>
               </div>
@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                   <input type="email" class="form-control align-item-left" name="user_email" id="inputEmailLogin">
                 </div>
               </div>
-              
+
               <div class="mb-3 row">
                 <label for="inputPassword"
                   class=" col-sm-2 col-form-label colorWhite raleway400 align-item-left">Password</label>
@@ -120,12 +120,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
               </div>
               <div class="row justify-content-center ">
                 <div class="col-auto">
-                  <button type="submit" class="btn btn-primary mb-3">Valider</button>
+                  <button type="submit" class="btnValidLog btn-primary mb-3">Valider</button>
                 </div>
               </div>
             </form>
             <div class="col-sm-8">
-                  <a class="colorWhite" href="register.php">Pas encore Inscrit? Cliquez ici!</a>
+              <a class="colorWhite" href="register.php">Pas encore Inscrit? Cliquez ici!</a>
             </div>
           </div>
         </div>

@@ -49,7 +49,7 @@ if (isConnected() == False) {
           </div>
           <div class="row justify-content-center ">
             <div class="col-auto">
-              <button type="submit" class="btn btn-primary mb-3">Valider</button>
+              <button type="submit" class="btnValidCont btn btn-primary mb-3">Valider</button>
             </div>
           </div>
         </div>

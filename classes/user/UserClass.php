@@ -42,7 +42,8 @@ class User //extends UserLogIn
 
         $query = $dbh->prepare("INSERT INTO `user` (`username`, `user_age`, `user_email`, `user_pdw`, `user_img`) VALUES (?,?,?,?,?)");
 
-        $query->execute([$this->username, $this->user_age, $this->user_email, $pdw, $this->user_img,]);
+        $query->execute([$this->username, $this->user_age, $this->user_email, $pdw, $this->user_img]);
+
     }
 
 
@@ -65,7 +66,7 @@ class User //extends UserLogIn
 
         $query = $dbh->prepare("SELECT `id` FROM `user` WHERE `user_email` = ? AND `user_pdw` = '$pdw' ");
 
-        $query->execute([$this->user_email ]);
+        $query->execute([$this->user_email]);
 
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $userlogin) {
