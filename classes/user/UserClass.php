@@ -108,13 +108,7 @@ class User //extends UserLogIn
                     </p>
                     <p>Mot de passe : <input class="noBack" type="password" value="Encrypted..." disabled />
                     </p>
-                    <p>Nombre d'enchères :
-                        <?php echo $userInfo['nbr_bids']; ?>
-                    </p>
-                    <p>Nombre d'annonces :
-                        <?php echo $userInfo['nbr_object']; ?>
-                    </p>
-
+                   
                 </div>
             </div>
             <?php

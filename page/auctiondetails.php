@@ -5,6 +5,7 @@ include_once __DIR__ . "/../auth/sessions_management.php";
 
 use auction\AuctionDetails;
 
+
 ?>
 
 

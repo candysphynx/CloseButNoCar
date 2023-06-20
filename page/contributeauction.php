@@ -1,9 +1,25 @@
 <?php
 session_start();
 include_once __DIR__ . "/../auth/sessions_management.php";
+include_once __DIR__ . "/../classes/auction/Bids.php";
+use bids\Bids;
+
 if (isConnected() == False) {
   header('Location: authentication.php');
   exit();
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+  $newBids = new Bids (
+    $_POST["user_id"],
+    $_POST["object_id"],
+    $_POST["auction_date"],
+    $_POST["auction_price"],
+
+  );
+  $newBids->setBids();
+
 }
 ?>
 <!doctype html>
@@ -45,6 +61,7 @@ if (isConnected() == False) {
             <p class="d-flex colorWhite raleway400 fs40 justify-content-center"><?php echo $_SESSION['username'];?>, voici vos Contributions : </p>
           </div>
           <div class="row ">
+
 
           </div>
           <div class="row justify-content-center ">

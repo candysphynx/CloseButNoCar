@@ -3,9 +3,11 @@
 namespace auction;
 include_once __DIR__."/../DataBase.php";
 include_once __DIR__."/Auction.php";
+include_once __DIR__."/Bids.php";
 use Database;
-use DateTime;
 use PDO;
+use bids;
+use bids\Bids as BidsBids;
 
 class AuctionDetails extends Auction
 {
@@ -76,25 +78,25 @@ class AuctionDetails extends Auction
                                 <p><?php echo $row['obj_descr'];?></p>
                                 <div class="card bg-dark">
                                     <?php
-                                    $auction = $row['obj_price'] + $row['auction_price'] ;
                                     if(isConnected()){
                                     ?>
                                     <div class="row">
                                         <div class="card-body">
                                             <p class="colorWhite">Nous vous proposons d'enchérir sur ce sublime Véhicule! </p>
-                                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id'];?>"/>
-                                            <input type="hidden" name="object_id" value=" <?php echo $id;?>"/>
-                                            <input type="hidden" name="auction_date" value="<?php echo date("Y-m-d"); ?>"/>
-                                            <input type="number" name="auction_price" minlength="2">
-                                            <button type="button" class="btn btn-primary"
-                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Valider</button>
+                                            <form action="../page/contributeauction.php" method="POST">
+                                                <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id'];?>"/>
+                                                <input type="hidden" name="object_id" value="<?php echo $id;?>"/>
+                                                <input type="hidden" name="auction_date" value="<?php echo date("Y-m-d"); ?>"/>
+                                                <input type="number" name="auction_price" minlength="2">
+                                                <button type="submit" class="btn btn-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Valider</button>
+                                            </form>
                                         </div>
                                         <div class="col colorWhite">
                                             <?php
                                             
                                             ?>
-                                                <p> Aujourd'hui, <?php echo $row['last_user_auction'];?> a enchéri. Dernière enchère : <?php echo $row['auction_price'];?> €  </p>
-                                                <p>Le montant Total de l'enchère est de <?php echo $auction;?> €.  </p>
+                                                <?php BidsBids::displayPrice($id) ?>
+                                                <?php BidsBids::displayLastAuctionInfo($id) ?>
                                                 <p>Temps restant avant la fermeture de l'enchère :  </p>
                                                 <div class="progress" role="progressbar" aria-label="Animated striped" aria-valuenow="<?php echo $ExpLast; ?>" aria-valuemin="0" aria-valuemax="7">
                                                     <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <?php echo (((int)$ExpLast) * 100 / 7); ?>%"><?php echo $ExpLast; ?> / 7 jours</div>
