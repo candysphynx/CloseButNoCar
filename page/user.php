@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <label for="user_image" class="col-form-label">Image :</label>
                   </div>
                   <div class="col-auto">
-                    <input class="form-control" type="file" accept=".jpg" id="user_img" name="user_img">
+                    <input class="form-control" type="file"  accept=".jpg" id="user_img" name="user_img">
                   </div>
                 </div>
                 <div class=" colorWhite row g-3 align-items-center justify-content-center" style="padding-left: 46px;">
@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <label for="username" class="col-form-label">Pseudo : </label>
                   </div>
                   <div class="col-auto ">
-                    <input type="text" id="username" class="form-control" name="username">
+                    <input type="text" id="username" value="<?php echo $_SESSION['username'];?>" class="form-control" name="username">
                   </div>
 
                 </div>
@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <label for="user_email" class="col-form-label">E-mail : </label>
                   </div>
                   <div class="col-auto ">
-                    <input type="email" id="user_email" class="form-control" name="user_email">
+                    <input type="email" id="user_email" value="<?php echo $_SESSION['email'];?>" class="form-control" name="user_email">
                   </div>
                 </div>
                 <div class=" colorWhite row g-3 align-items-center justify-content-center" style="padding-left: 63px;">
@@ -122,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <label for="user_age" class="col-form-label">Age : </label>
                   </div>
                   <div class="col-auto ">
-                    <input type="text" id="user_age" class="form-control" name="user_age">
+                    <input type="text" id="user_age" value="<?php echo $_SESSION['age'];?>" class="form-control" name="user_age">
                   </div>
                 </div>
 

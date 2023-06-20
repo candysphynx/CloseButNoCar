@@ -42,7 +42,7 @@ if (isConnected() == False) {
       <div class="bkgImg row justify-content-center  ">
         <div class="row pt-5 bg-dark mb-3  border-linear" style="max-width: 58rem;">
           <div class="row ">
-            <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Vos Contributions</p>
+            <p class="d-flex colorWhite raleway400 fs40 justify-content-center"><?php echo $_SESSION['username'];?>, voici vos Contributions : </p>
           </div>
           <div class="row ">
 

@@ -112,11 +112,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                   <input class="form-control align-item-left" type="file" accept=".jpg" id="image" name="image">
                 </div>
               </div>
+              
               <div class="row justify-content-center ">
                 <div class="col-auto">
                   <button type="submit" class="btnValidReg btn-primary mb-3">Valider</button>
                 </div>
               </div>
+              
             </form>
             <div class="col-sm-8">
               <a class="colorWhite" href="authentication.php">Déja un compte? Cliquez ici!</a>
