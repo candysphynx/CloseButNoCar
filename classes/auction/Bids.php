@@ -62,18 +62,17 @@ class Bids {
     public static function displayContribution($id)
     {
         $dbh = Database::createDBConnection();
-        $query = $dbh->prepare("SELECT b.user_id, u.username, u.user_img, b.auction_price, b.auction_date, o.obj_model FROM `bids` b, `user` u, `object` o WHERE b.user_id = ? AND b.user_id = u.id AND o.id = b.object_id;;");
+        $query = $dbh->prepare("SELECT b.user_id, u.username, u.user_img, b.auction_price, b.auction_date, o.obj_brand, o.obj_model FROM `bids` b, `user` u, `object` o WHERE b.user_id = ? AND b.user_id = u.id AND o.id = b.object_id;;");
          $query->execute([$id]);
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($result as $userContrib) {  ?>
         
 
-            <li class="colorWhite border-linear">
-                    <span>enchère : <?php echo $userContrib['auction_price']; ?></span>
-                    <span>enchère sur : <?php echo $userContrib['obj_model']; ?></span>
-                    <span>Date de l'enchère: <?php echo $userContrib['auction_date']; ?></span>
-
+            <li class="colorWhite border-btm-linear">
+                    <span>Le : <strong class="colorYellow"> <?php echo $userContrib['auction_date']; ?></strong>  </span>
+                    <span>vous avez enchéri sur :  <strong class="colorYellow"> <?php echo $userContrib['obj_brand'];?> <?php echo $userContrib['obj_model']; ?></strong>, </span>
+                    <span> votre enchère est de : <strong class="colorYellow"><?php echo $userContrib['auction_price']; ?></strong>  €</span>
             </li>
             <?php
         }

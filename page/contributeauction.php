@@ -67,11 +67,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ?>
             </ul>
           </div>
-          <div class="row justify-content-center ">
-            <div class="col-auto">
-              <button type="submit" class="btnValidCont btn btn-primary mb-3">Valider</button>
-            </div>
-          </div>
         </div>
 
       </div>
