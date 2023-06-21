@@ -70,7 +70,7 @@ class User //extends UserLogIn
 
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $userlogin) {
-            
+
             createUserSession($userlogin['id']);
         }
     }

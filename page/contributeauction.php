@@ -1,10 +1,16 @@
 <?php
+
+namespace bids;
+
 session_start();
 include_once __DIR__ . "/../auth/sessions_management.php";
 if (isConnected() == False) {
   header('Location: authentication.php');
   exit();
 }
+
+include_once __DIR__ . "/../classes/auction/Bids.php";
+
 ?>
 <!doctype html>
 <html lang="fr">
@@ -42,15 +48,10 @@ if (isConnected() == False) {
       <div class="bkgImg row justify-content-center  ">
         <div class="row pt-5 bg-dark mb-3  border-linear" style="max-width: 58rem;">
           <div class="row ">
-            <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Vos Contributions</p>
+            <p class="d-flex colorWhite raleway400 fs40 justify-content-center">Vos Contributions : </p>
           </div>
           <div class="row ">
-
-          </div>
-          <div class="row justify-content-center ">
-            <div class="col-auto">
-              <button type="submit" class="btnValidCont btn btn-primary mb-3">Valider</button>
-            </div>
+            <?php Bids::displayContribution($_SESSION['user_id']); ?>
           </div>
         </div>
 
