@@ -39,13 +39,20 @@ use auction\AuctionDetails;
     </div>
 
     <!-- Body de l'index -->
-    <div class="bkgImg row">
-      <?php
-      AuctionDetails::getAuctionDetails($_GET['auctionid']);
-      ?>
+    <div class="row align-content-center">
+      <div class="col">
+        <div class="row placeholder-lg"></div>
+        <!-- Content Cards -->
+          <div class="bkgImg row justify-content-center  ">
+            <!-- Sign-in form -->
+            <div class="row pt-2 bg-dark mb-3 border-linear " style="max-width: 58rem;">
+              <?php
+              AuctionDetails::getAuctionDetails($_GET['auctionid']);
+              ?>
+            </div>
+          </div>
+      </div>   
     </div>
-    
-  </div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

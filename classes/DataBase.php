@@ -5,12 +5,12 @@
 /* Pour Windows: const ADDRESS = "mysql:dbname=cbnc;host:localhost"; */
 abstract class Database
 {
-    const ADDRESS = "mysql:dbname=cbnc;host:localhost";
+    const ADDRESS = "mysql:dbname=cbnc;host=localhost";
     const USER = "root";
     const PASSWORD = "root";
 
     /**
-     * Création d'un connexion à la base de données
+     * Création d'une connexion à la base de données
      */
     public static function createDBConnection()
     {
