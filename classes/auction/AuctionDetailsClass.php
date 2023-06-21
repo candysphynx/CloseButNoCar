@@ -61,29 +61,29 @@ class AuctionDetails extends Auction
                 <div class="row">
 
                     <!-- Colonne de droite -->
-                    <div class="col-12 border detailspage mb-5">
-                        <div class="row d-flex details">
-                            <div class="col">
+                    <div class="col-12 detailspage mb-5">
+                        <div class="row border-btm-linear d-flex details">
+                            <div class="col ">
                                 <img class="imgAuction"
                                     src=" <?php echo 'data:image/jpg;base64,' . base64_encode($row['obj_img']); ?>" />
                             </div>
-                            <div class="col border detailsinfos">
-                                <p>MARQUE :
+                            <div class="col  detailsinfos">
+                                <p><strong class="activeGradient"> MARQUE :</strong>
                                     <?php echo $row['obj_brand']; ?>
                                 </p>
-                                <p>MODÈLE :
+                                <p><strong class="activeGradient"> MODÈLE :</strong>
                                     <?php echo $row['obj_model']; ?>
                                 </p>
-                                <p>ANNEE :
+                                <p><strong class="activeGradient"> ANNEE :</strong>
                                     <?php echo $row['obj_year']; ?>
                                 </p>
-                                <p>PRIX :
+                                <p><strong class="activeGradient"> PRIX :</strong>
                                     <?php echo $row['obj_price']; ?> €
                                 </p>
                             </div>
                         </div>
-                        <div class="row d-flex border description">
-                            <p>DESCRIPTION :</p>
+                        <div class="row d-flex  description">
+                            <p><strong class="activeGradient"> DESCRIPTION : </strong></p>
                             <p>
                                 <?php echo $row['obj_descr']; ?>
                             </p>
@@ -93,7 +93,7 @@ class AuctionDetails extends Auction
                                     ?>
                                     <div class="row">
                                         <div class="card-body">
-                                            <p class="colorWhite">Nous vous proposons d'enchérir sur ce sublime Véhicule! </p>
+                                            <p class="activeGradient d-flex justify-content-center">Nous vous proposons d'enchérir sur ce sublime Véhicule! </p>
                                             <form action="../page/contributeauction.php" method="POST">
                                                 <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>" />
                                                 <input type="hidden" name="object_id" value="<?php echo $id; ?>" />
@@ -209,7 +209,7 @@ class AuctionDetails extends Auction
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             ?>
-                    <div class="card m-3 colorWhite bg-dark border-linear details " style="width: 10rem; height: 250px ">
+                    <div class="card m-3 colorWhite bg-dark border-linear details " style="width: 10rem; height:300px ">
                         <img src="<?php echo 'data:image/jpg;base64,' . base64_encode($row['obj_img']); ?>"
                             class="card-img-top imgcard2" alt="...">
                         <div class="card-body d-flex flex-column align-items-center ">
@@ -221,6 +221,7 @@ class AuctionDetails extends Auction
                             </p>
                             <a href="auctiondetails.php?auctionid=<?php echo $row['id']; ?>"
                                 class="btn btn-outline-primary">Détails</a>
+                                <a href="" class="btn btn-outline-danger">Supprimer</a>
                         </div>
                     </div>
                     <?php
