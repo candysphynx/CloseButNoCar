@@ -17,17 +17,13 @@ class Bids
     public $auction_price;
     public $past_bids_id;
 
-    public function __construct($id, $user_id, $object_id, $auction_date, $auction_price, $past_bids_id)
-    {
-        $this->id = $id;
- 
 
-    public function __construct($user_id,$object_id,$auction_date,$auction_price){
+    public function __construct($user_id, $object_id, $auction_date, $auction_price)
+    {
         $this->user_id = $user_id;
         $this->object_id = $object_id;
         $this->auction_date = $auction_date;
         $this->auction_price = $auction_price;
-        $this->past_bids_id = $past_bids_id;
     }
 
     public function setBids()
@@ -38,8 +34,8 @@ class Bids
 
         $query->execute([$this->user_id, $this->object_id, $this->auction_date, $this->auction_price]);
     }
-    
-    public static function displayPrice ($id)
+
+    public static function displayPrice($id)
     {
         $dbh = Database::createDBConnection();
 
@@ -48,14 +44,18 @@ class Bids
         $query->execute([$id]);
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $totalBids) {
-            if($totalBids['BidsTotal'] != "" ){ ?> 
-                <p> Pour ce modèle <?php echo $totalBids['obj_model']; ?>, le montant  des Enchères est de  <?php echo $totalBids['BidsTotal']; ?> €, le prix Total de la voiture est de <?php echo ($totalBids['BidsTotal'] + $totalBids['obj_price'] ); ?> €  </p> 
-                <?php }
-            else { ?>
-             <p> Pas encore d'enchère! Profitez-en vite! 🤘 </p> 
-             <?php }}                
+            if ($totalBids['BidsTotal'] != "") { ?>
+                <p> Pour ce modèle
+                    <?php echo $totalBids['obj_model']; ?>, le montant des Enchères est de
+                    <?php echo $totalBids['BidsTotal']; ?> €, le prix Total de la voiture est de
+                    <?php echo ($totalBids['BidsTotal'] + $totalBids['obj_price']); ?> €
+                </p>
+            <?php } else { ?>
+                <p> Pas encore d'enchère! Profitez-en vite! 🤘 </p>
+            <?php }
+        }
     }
-    public static function displayLastAuctionInfo ($id)
+    public static function displayLastAuctionInfo($id)
     {
         $dbh = Database::createDBConnection();
 
@@ -64,9 +64,49 @@ class Bids
         $query->execute([$id]);
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $LastBids) {
-            if($LastBids['username'] != "" ){ ?> 
-                <p> Le <?php echo $LastBids['auction_date']; ?>,   <?php echo $LastBids['username']; ?> à enchéri de <?php echo $LastBids['auction_price']; ?> €  </p> 
-                <?php }
-            else { }}                
+            if ($LastBids['username'] != "") { ?>
+                <p> Le
+                    <?php echo $LastBids['auction_date']; ?>,
+                    <?php echo $LastBids['username']; ?> à enchéri de
+                    <?php echo $LastBids['auction_price']; ?> €
+                </p>
+            <?php } else {
+            }
+        }
+    }
+
+    public static function displayContribution($id)
+    {
+        $dbh = Database::createDBConnection();
+        $query = $dbh->prepare("SELECT * FROM `bids`
+        LEFT JOIN `user` ON bids.user_id = user.id WHERE `user_id` = ?");
+        $query->execute([$id]);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($result as $userContrib) { ?>
+
+            <div class=user>
+                <div>
+                    <img class="profilePicture"
+                        src=" <?php echo 'data:image/jpg;base64,' . base64_encode($userContrib['user_img']) ?>" />
+                </div>
+                <div class=username>
+                    <h2 class=hUsername><?php echo $userContrib['username']; ?></h2>
+                </div>
+                <div class="userInfo">
+                    <p>Montant de la dernière enchère :
+                        <?php echo $userContrib['auction_price']; ?>
+                    </p>
+
+                    <p>Dernière enchère sur :
+                        <?php echo $userContrib['obj_model']; ?>
+                    </p>
+                    <p>Date de la dernière enchère:
+                        <?php echo $userContrib['auction_date']; ?>
+                    </p>
+                </div>
+            </div>
+            <?php
+        }
     }
 }
