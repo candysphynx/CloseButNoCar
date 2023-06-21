@@ -28,6 +28,10 @@
           <li class="nav-item">
             <a <?php if(isConnected()) { echo( "class=\"nav-link colorRed\" href=\"authentication.php\">Déconnexion"); } else { echo("class=\"nav-link \" href=\"authentication.php\">Connexion / Inscription"); } ?> </a>
           </li>
+          <li class="nav-item">
+            <p <?php if(isConnected()) { ?> class="nav-link " > Bienvenue <?php  echo $_SESSION['username'] ?> !<?php } else { ?> class="nav-link " > Bienvenue ! <?php } ?> </p>
+          </li>
+          
           
         </ul>
       </div>

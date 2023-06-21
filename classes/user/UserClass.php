@@ -3,6 +3,7 @@
 namespace user;
 
 include_once __DIR__ . "/../DataBase.php";
+include_once __DIR__ . "/../../auth/sessions_management.php";
 
 use Database;
 
@@ -64,7 +65,7 @@ class User //extends UserLogIn
 
         $pdw = sha1($this->user_pdw);
 
-        $query = $dbh->prepare("SELECT `id` FROM `user` WHERE `user_email` = ? AND `user_pdw` = '$pdw' ");
+        $query = $dbh->prepare("SELECT * FROM `user` WHERE `user_email` = ? AND `user_pdw` = '$pdw' ");
 
         $query->execute([$this->user_email]);
 
@@ -83,7 +84,9 @@ class User //extends UserLogIn
         $query->execute([$id]);
 
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($result as $userInfo) { ?>
+        foreach ($result as $userInfo) {
+            ?>
+
 
             <div class=user>
                 <div>
@@ -101,12 +104,6 @@ class User //extends UserLogIn
                         <?php echo $userInfo['user_age']; ?>
                     </p>
                     <p>Mot de passe : <input class="noBack" type="password" value="Encrypted..." disabled />
-                    </p>
-                    <p>Nombre d'enchères :
-                        <?php echo $userInfo['nbr_bids']; ?>
-                    </p>
-                    <p>Nombre d'annonces :
-                        <?php echo $userInfo['nbr_object']; ?>
                     </p>
 
                 </div>
