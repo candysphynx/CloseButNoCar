@@ -71,6 +71,9 @@ class User //extends UserLogIn
 
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $userlogin) {
+            setValue('username', $userlogin['username']);
+            setValue('email', $userlogin['user_email']);
+            setValue('age', $userlogin['user_age']);
 
             createUserSession($userlogin['id']);
         }
@@ -90,8 +93,7 @@ class User //extends UserLogIn
 
             <div class=user>
                 <div>
-                    <img class="profilePicture"
-                        src=" <?php echo 'data:image/jpg;base64,' . base64_encode($userInfo['user_img']) ?>" />
+                    <img class="menuPicture" src=" <?php echo 'data:image/jpg;base64,' . base64_encode($userInfo['user_img']) ?>" />
                 </div>
                 <div class=username>
                     <h2 class=hUsername><?php echo $userInfo['username']; ?></h2>
