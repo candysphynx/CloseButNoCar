@@ -46,7 +46,7 @@ use auction\AuctionDetails;
           <p class="colorWhite d-flex justify-content-center">Enchères Actives</p>
         </div>
         <!-- Content Cards -->
-        <div class="bkgImg row">
+        <div class="bkgImg row justify-content-center">
           <?php
           AuctionDetails::getAuctionSimple();
           ?>
