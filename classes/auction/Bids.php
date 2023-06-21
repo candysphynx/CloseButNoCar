@@ -8,11 +8,12 @@ use PDO;
 
 class Bids
 {
-    public $id;
-    public $user_id;
-    public $object_id;
-    public $auction_date;
-    public $auction_price;
+    protected $id;
+    protected $user_id;
+    protected $object_id;
+    protected $auction_date;
+    protected $auction_price;
+    protected $past_bids_id;
 
 
     public function __construct($user_id, $object_id, $auction_date, $auction_price)
@@ -21,6 +22,56 @@ class Bids
         $this->object_id = $object_id;
         $this->auction_date = $auction_date;
         $this->auction_price = $auction_price;
+    }
+
+    public function setId()
+    {
+        $this->id;
+    }
+    public function getId()
+    {
+        return
+            $this->id;
+    }
+
+    public function setUser_id()
+    {
+        $this->user_id;
+    }
+    public function getUser_id()
+    {
+        return
+            $this->user_id;
+    }
+
+    public function setObject_id()
+    {
+        $this->object_id;
+    }
+    public function getObject_id()
+    {
+        return
+            $this->object_id;
+    }
+
+    public function setAuction_date()
+    {
+        $this->auction_date;
+    }
+    public function getAuction_date()
+    {
+        return
+            $this->auction_date;
+    }
+
+    public function setAuction_price()
+    {
+        $this->auction_price;
+    }
+    public function getAuction_price()
+    {
+        return
+            $this->auction_price;
     }
 
     public function setBids()
@@ -33,6 +84,8 @@ class Bids
     }
 
     public static function displayPrice($id)
+
+    public static function displayPrice($id)
     {
         $dbh = Database::createDBConnection();
 
@@ -41,6 +94,16 @@ class Bids
         $query->execute([$id]);
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $totalBids) {
+            if ($totalBids['BidsTotal'] != "") { ?>
+                <p> Pour ce modèle
+                    <?php echo $totalBids['obj_model']; ?>, le montant des Enchères est de
+                    <?php echo $totalBids['BidsTotal']; ?> €, le prix Total de la voiture est de
+                    <?php echo ($totalBids['BidsTotal'] + $totalBids['obj_price']); ?> €
+                </p>
+            <?php } else { ?>
+                <p> Pas encore d'enchère! Profitez-en vite! 🤘 </p>
+            <?php }
+        }
             if ($totalBids['BidsTotal'] != "") { ?>
                 <p> Pour ce modèle
                     <?php echo $totalBids['obj_model']; ?>, le montant des Enchères est de
@@ -71,6 +134,7 @@ class Bids
             }
         }
     }
+
     public static function displayContribution($id)
     {
         $dbh = Database::createDBConnection();

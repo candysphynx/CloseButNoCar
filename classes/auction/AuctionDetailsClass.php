@@ -4,19 +4,18 @@ namespace auction;
 
 include_once __DIR__ . "/../DataBase.php";
 include_once __DIR__ . "/Auction.php";
-include_once __DIR__ . "/Bids.php";
 use Database;
 use PDO;
 use bids\Bids as BidsBids;
 
 class AuctionDetails extends Auction
 {
-    public $obj_year;
-    public $obj_price;
-    public $obj_descr;
-    public $obj_date;
-    public $last_user_auction;
-    public $auction_price;
+    protected $obj_year;
+    protected $obj_price;
+    protected $obj_descr;
+    protected $obj_date;
+    protected $last_user_auction;
+    protected $auction_price;
 
     public function __construct($obj_model, $obj_brand, $obj_img, $obj_year, $obj_price, $obj_descr, $obj_date)
     {
@@ -35,11 +34,44 @@ class AuctionDetails extends Auction
         $query->execute([$_SESSION['user_id'], $this->obj_model, $this->obj_brand, $this->obj_img, $this->obj_year, $this->obj_price, $this->obj_descr, $this->obj_date,]);
     }
 
-    public function __get($property)
+    public function setObj_year()
     {
-        if ($property !== "dbh") {
-            return $this->$property;
-        }
+        $this->obj_year;
+    }
+    public function getObj_year()
+    {
+        return
+            $this->obj_year;
+    }
+
+    public function setObj_price()
+    {
+        $this->obj_price;
+    }
+    public function getObj_price()
+    {
+        return
+            $this->obj_price;
+    }
+
+    public function setObj_descr()
+    {
+        $this->obj_descr;
+    }
+    public function getObj_descr()
+    {
+        return
+            $this->obj_descr;
+    }
+
+    public function setObj_date()
+    {
+        $this->obj_date;
+    }
+    public function getObj_date()
+    {
+        return
+            $this->obj_date;
     }
 
     public static function getAuctionDetails($id)
@@ -89,6 +121,7 @@ class AuctionDetails extends Auction
                             </p>
                             <div class="card bg-dark">
                                 <?php
+                                $auction = $row['obj_price'] + $row['auction_price'];
                                 if (isConnected()) {
                                     ?>
                                     <div class="row">
@@ -107,8 +140,13 @@ class AuctionDetails extends Auction
                                             <?php
 
                                             ?>
-                                            <?php BidsBids::displayPrice($id) ?>
-                                            <?php BidsBids::displayLastAuctionInfo($id) ?>
+                                            <p> Aujourd'hui,
+                                                <?php echo $row['last_user_auction']; ?> a enchéri. Dernière enchère :
+                                                <?php echo $row['auction_price']; ?> €
+                                            </p>
+                                            <p>Le montant Total de l'enchère est de
+                                                <?php echo $auction; ?> €.
+                                            </p>
                                             <p>Temps restant avant la fermeture de l'enchère : </p>
                                             <div class="progress" role="progressbar" aria-label="Animated striped"
                                                 aria-valuenow="<?php echo $ExpLast; ?>" aria-valuemin="0" aria-valuemax="7">
