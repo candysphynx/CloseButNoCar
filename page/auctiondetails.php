@@ -45,7 +45,7 @@ use auction\AuctionDetails;
         <!-- Content Cards -->
           <div class="bkgImg row justify-content-center  ">
             <!-- Sign-in form -->
-            <div class="row pt-2 bg-dark mb-3 border-linear " style="max-width: 58rem;">
+            <div class="row pt-2 bg-dark mb-3 border-linear " style="max-width: 57rem;">
               <?php
               AuctionDetails::getAuctionDetails($_GET['auctionid']);
               ?>
