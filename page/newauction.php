@@ -141,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
       </div>
       <div id="ourauction" class="bkgImg row justify-content-center  ">
-        <div class="row pt-5 bg-dark mb-3 h-80 border-linear " style="max-width: 60rem;">
+        <div class="row pt-5 bg-dark mb-3 git  border-linear " style="max-width: 60rem;">
           <div class="row ">
             <p class="d-flex colorWhite raleway400 fs40 justify-content-center">
               <?php echo $_SESSION['username']; ?>, voici vos Annonces :

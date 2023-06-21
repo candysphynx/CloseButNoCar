@@ -29,9 +29,9 @@ class AuctionDetails extends Auction
     {
         $dbh = Database::createDBConnection();
 
-        $query = $dbh->prepare("INSERT INTO `object` (`obj_model`, `obj_brand`, `obj_img`, `obj_year`, `obj_price` , `obj_descr`, `obj_date`) VALUES (?,?,?,?,?,?,?)");
+        $query = $dbh->prepare("INSERT INTO `object` (`user_id`,`obj_model`, `obj_brand`, `obj_img`, `obj_year`, `obj_price` , `obj_descr`, `obj_date`) VALUES (?,?,?,?,?,?,?,?)");
 
-        $query->execute([$this->obj_model, $this->obj_brand, $this->obj_img, $this->obj_year, $this->obj_price, $this->obj_descr, $this->obj_date,]);
+        $query->execute([$_SESSION['user_id'], $this->obj_model, $this->obj_brand, $this->obj_img, $this->obj_year, $this->obj_price, $this->obj_descr, $this->obj_date,]);
     }
 
     public function __get($property)
