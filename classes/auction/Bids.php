@@ -3,7 +3,7 @@
 namespace bids;
 
 include_once __DIR__ . "/../DataBase.php";
-include_once __DIR__ . "/../classes/user/UserClass.php";
+//include_once __DIR__ . "/../classes/user/UserClass.php";
 
 use Database;
 use PDO;
@@ -78,8 +78,10 @@ class Bids
     public static function displayContribution($id)
     {
         $dbh = Database::createDBConnection();
-        $query = $dbh->prepare("SELECT * FROM `bids`
-        LEFT JOIN `user` ON bids.user_id = user.id WHERE `user_id` = ?");
+        $query = $dbh->prepare("SELECT b.user_id, u.username, b.auction_price, b.auction_date, o.obj_model FROM `bids` b, `user` u, `object` o WHERE b.object_id = ? AND b.user_id = u.id;");
+
+
+
         $query->execute([$id]);
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
