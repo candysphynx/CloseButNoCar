@@ -10,7 +10,7 @@ abstract class Database
     const PASSWORD = "root";
 
     /**
-     * Création d'un connexion à la base de données
+     * Création d'une connexion à la base de données
      */
     public static function createDBConnection()
     {
