@@ -2,10 +2,10 @@
 
 /* Pour Mac: const ADDRESS = "mysql:dbname=cbnc;host=127.0.0.1;port=8889"*/
 
-/* Pour Windows: const ADDRESS = "mysql:dbname=cbnc;host:localhost"; */
+/* Pour Windows: const ADDRESS = "mysql:dbname=cbnc;host=localhost"; */
 abstract class Database
 {
-    const ADDRESS = "mysql:dbname=cbnc;host=127.0.0.1;port=8889";
+    const ADDRESS = "mysql:dbname=cbnc;host=localhost";
     const USER = "root";
     const PASSWORD = "root";
 
