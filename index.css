@@ -357,5 +357,7 @@ body {
     height: 40px;
     width: 40px;
     border-radius: 48px;
+    padding: 1px 1px 1px 1px;
+    border:2px solid white
 
 }
