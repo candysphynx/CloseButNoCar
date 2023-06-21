@@ -73,6 +73,7 @@ class User //extends UserLogIn
         foreach ($result as $userlogin) {
             setValue('username',$userlogin['username']);
             setValue('email',$userlogin['user_email']);
+            setValue('user_img',$userlogin['user_img']);
             setValue('age',$userlogin['user_age']);
             
             createUserSession($userlogin['id']);
@@ -93,7 +94,7 @@ class User //extends UserLogIn
 
             <div class=user>
                 <div>
-                    <img class="profilePicture"
+                    <img class="menuPicture"
                         src=" <?php echo 'data:image/jpg;base64,' . base64_encode($userInfo['user_img']) ?>" />
                 </div>
                 <div class=username>

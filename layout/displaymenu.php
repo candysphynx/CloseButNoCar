@@ -11,9 +11,9 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav px-3">
           <li class="nav-item active activeGradient">
-            <a class="nav-link" href="home.php">Enchères <span class="sr-only">(ici)</span></a>
+            <a class="nav-link" href="home.php">Enchères </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item  activeGradient">
             <a class="nav-link " href="pastbids.php">Enchères Terminées</a>
           </li>
           <li class="nav-item">
@@ -29,9 +29,11 @@
             <a <?php if(isConnected()) { echo( "class=\"nav-link colorRed\" href=\"authentication.php\">Déconnexion"); } else { echo("class=\"nav-link \" href=\"authentication.php\">Connexion / Inscription"); } ?> </a>
           </li>
           <li class="nav-item">
-            <p <?php if(isConnected()) { ?> class="nav-link " > Bienvenue <?php  echo $_SESSION['username'] ?> !<?php } else { ?> class="nav-link " > Bienvenue ! <?php } ?> </p>
+          <?php if(isConnected()) { ?>
+            <span class="d-flex"> <p  class="nav-link activeGradient " > Bienvenue <?php  echo $_SESSION['username'] ?> ! </p><img class="menuPicture" src=" <?php echo 'data:image/jpg;base64,' . base64_encode($_SESSION['user_img']) ?>" /></span>
+            
+            <?php } ?>
           </li>
-          
           
         </ul>
       </div>
