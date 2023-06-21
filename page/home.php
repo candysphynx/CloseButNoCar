@@ -41,6 +41,7 @@ use auction\AuctionDetails;
     <div class="row">
       <!-- Colonne de gauche -->
       <div class="col-2">
+        
       </div>
       <!-- Colonne de droite -->
       <div class="col-10">
