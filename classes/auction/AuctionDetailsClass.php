@@ -93,7 +93,7 @@ class AuctionDetails extends Auction
                                     ?>
                                     <div class="row">
                                         <div class="card-body">
-                                            <p class="activeGradient d-flex justify-content-center">Nous vous proposons d'enchérir sur ce sublime Véhicule! </p>
+                                            <p class="activeGradient d-flex justify-content-center"><strong>Nous vous proposons d'enchérir sur ce sublime Véhicule!</strong> </p>
                                             <form action="../page/contributeauction.php" method="POST">
                                                 <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>" />
                                                 <input type="hidden" name="object_id" value="<?php echo $id; ?>" />
@@ -170,6 +170,23 @@ class AuctionDetails extends Auction
                     <?php }
         }
     }
+    public static  function winner($id)
+    { 
+        $dbh = Database::createDBConnection();
+        $query = $dbh->prepare("SELECT SUM(b.auction_price)AS BidsTotal, o.obj_model, o.obj_price,u.username, MAX(b.id) AS latestBids FROM `bids` b, `user` u, `object` o WHERE b.object_id = ? AND b.user_id = u.id;");
+        $query->execute([$id]);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $winner) {
+            ?>
+        <p><strong class="activeGradient"> Prix Remporté: </strong> <?php echo ($winner['BidsTotal'] + $winner['obj_price']) ; ?>€</p>
+        <p> <strong class="activeGradient"> Par: </strong> <?php echo $winner['username'] ?> </p>
+            <?php
+
+
+        }
+
+    }
+
     public static function getAuctionExpired()
     {
         $dbh = Database::createDBConnection();
@@ -181,7 +198,7 @@ class AuctionDetails extends Auction
             $expiredAsTimestamp = strtotime($row['obj_date'] . ' + 7 days');
             $expired = date('Y-m-d', $expiredAsTimestamp);
             if ($now->format('Y-m-d') >= $expired) { ?>
-                        <div class="card m-3 colorWhite bg-dark h-60 border-linear shadow-lg" style="width: 16rem;">
+                        <div class="card m-3 colorWhite bg-dark h-80 border-linear shadow-lg" style="width: 16rem;">
                             <img src="<?php echo 'data:image/png;base64,' . base64_encode($row['obj_img']); ?>"
                                 class=" imgcard card-img-top " alt="...">
                             <div class="card-body d-flex flex-column align-items-center">
@@ -189,11 +206,9 @@ class AuctionDetails extends Auction
                                     <?php echo $row['obj_brand']; ?>
                                     <?php echo $row['obj_model']; ?>
                                 </h5>
-                                <p class="card-text">Année:
-                                    <?php echo $row['obj_year']; ?>
-                                </p>
                                 <a class="btn btn-outline-primary" disabled>TROP TARD!</a>
-                                <p class="card-text">Expiré le:
+                                <p> <?php AuctionDetails::winner($row['id']) ; ?></p>
+                                <p class="card-text"><strong class="activeGradient">Expiré le: </strong>
                                     <?php echo $expired; ?>
                                 </p>
                             </div>
@@ -201,6 +216,7 @@ class AuctionDetails extends Auction
                     <?php }
         }
     }
+    
     public static function getAuctionUser($id)
     {
         $dbh = Database::createDBConnection();
@@ -221,7 +237,6 @@ class AuctionDetails extends Auction
                             </p>
                             <a href="auctiondetails.php?auctionid=<?php echo $row['id']; ?>"
                                 class="btn btn-outline-primary">Détails</a>
-                                <a href="" class="btn btn-outline-danger">Supprimer</a>
                         </div>
                     </div>
                     <?php
