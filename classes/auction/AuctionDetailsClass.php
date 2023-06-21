@@ -1,12 +1,12 @@
 <?php
 
 namespace auction;
-include_once __DIR__."/../DataBase.php";
-include_once __DIR__."/Auction.php";
-include_once __DIR__."/Bids.php";
+
+include_once __DIR__ . "/../DataBase.php";
+include_once __DIR__ . "/Auction.php";
+include_once __DIR__ . "/Bids.php";
 use Database;
 use PDO;
-use bids;
 use bids\Bids as BidsBids;
 
 class AuctionDetails extends Auction
@@ -46,110 +46,129 @@ class AuctionDetails extends Auction
     {
         $dbh = Database::createDBConnection();
         $query = $dbh->prepare("SELECT * FROM `object` WHERE `id`= ?");
-        $query-> execute([$id]);
+        $query->execute([$id]);
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        foreach($result as $row) {
+        foreach ($result as $row) {
             $now = new \DateTime("now");
-            $expiredAsTimestamp  = strtotime($row['obj_date'].' + 7 days');
-            $expired = date('Y-m-d', $expiredAsTimestamp) ;
+            $expiredAsTimestamp = strtotime($row['obj_date'] . ' + 7 days');
+            $expired = date('Y-m-d', $expiredAsTimestamp);
             $nownow = $now->format('Ymd');
             $expired2 = date('Ymd', $expiredAsTimestamp);
-            $ExpLast =intval($expired2) - intval($nownow);
-           
-            if ($now->format('Y-m-d') <= $expired ){
-                    ?>
-                    <div class="row">
-                        
-                        <!-- Colonne de droite -->
-                        <div class="col-12 border detailspage mb-5">
-                            <div class="row d-flex details">
-                                <div class="col">
-                                    <img class="imgAuction" src =" <?php echo 'data:image/jpg;base64,' . base64_encode($row['obj_img']);?>"/>
-                                </div>
-                                <div class="col border detailsinfos">
-                                    <p>MARQUE : <?php echo $row['obj_brand'];?></p>
-                                    <p>MODÈLE : <?php echo $row['obj_model'];?></p>
-                                    <p>ANNEE : <?php echo $row['obj_year'];?></p>
-                                    <p>PRIX : <?php echo $row['obj_price'];?> €</p>
-                                </div>
+            $ExpLast = intval($expired2) - intval($nownow);
+
+            if ($now->format('Y-m-d') <= $expired) {
+                ?>
+                <div class="row">
+
+                    <!-- Colonne de droite -->
+                    <div class="col-12 border detailspage mb-5">
+                        <div class="row d-flex details">
+                            <div class="col">
+                                <img class="imgAuction"
+                                    src=" <?php echo 'data:image/jpg;base64,' . base64_encode($row['obj_img']); ?>" />
                             </div>
-                            <div class="row d-flex border description">
-                                <p>DESCRIPTION :</p>
-                                <p><?php echo $row['obj_descr'];?></p>
-                                <div class="card bg-dark">
-                                    <?php
-                                    if(isConnected()){
+                            <div class="col border detailsinfos">
+                                <p>MARQUE :
+                                    <?php echo $row['obj_brand']; ?>
+                                </p>
+                                <p>MODÈLE :
+                                    <?php echo $row['obj_model']; ?>
+                                </p>
+                                <p>ANNEE :
+                                    <?php echo $row['obj_year']; ?>
+                                </p>
+                                <p>PRIX :
+                                    <?php echo $row['obj_price']; ?> €
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row d-flex border description">
+                            <p>DESCRIPTION :</p>
+                            <p>
+                                <?php echo $row['obj_descr']; ?>
+                            </p>
+                            <div class="card bg-dark">
+                                <?php
+                                if (isConnected()) {
                                     ?>
                                     <div class="row">
                                         <div class="card-body">
                                             <p class="colorWhite">Nous vous proposons d'enchérir sur ce sublime Véhicule! </p>
                                             <form action="../page/contributeauction.php" method="POST">
-                                                <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id'];?>"/>
-                                                <input type="hidden" name="object_id" value="<?php echo $id;?>"/>
-                                                <input type="hidden" name="auction_date" value="<?php echo date("Y-m-d"); ?>"/>
+                                                <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>" />
+                                                <input type="hidden" name="object_id" value="<?php echo $id; ?>" />
+                                                <input type="hidden" name="auction_date" value="<?php echo date("Y-m-d"); ?>" />
                                                 <input type="number" name="auction_price" minlength="2">
-                                                <button type="submit" class="btn btn-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Valider</button>
+                                                <button type="submit" class="btn btn-primary"
+                                                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Valider</button>
                                             </form>
                                         </div>
                                         <div class="col colorWhite">
                                             <?php
-                                            
+
                                             ?>
-                                                <?php BidsBids::displayPrice($id) ?>
-                                                <?php BidsBids::displayLastAuctionInfo($id) ?>
-                                                <p>Temps restant avant la fermeture de l'enchère :  </p>
-                                                <div class="progress" role="progressbar" aria-label="Animated striped" aria-valuenow="<?php echo $ExpLast; ?>" aria-valuemin="0" aria-valuemax="7">
-                                                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <?php echo (((int)$ExpLast) * 100 / 7); ?>%"><?php echo $ExpLast; ?> / 7 jours</div>
-                                                </div>
-                                                
-                                                
-                                        <div>
+                                            <?php BidsBids::displayPrice($id) ?>
+                                            <?php BidsBids::displayLastAuctionInfo($id) ?>
+                                            <p>Temps restant avant la fermeture de l'enchère : </p>
+                                            <div class="progress" role="progressbar" aria-label="Animated striped"
+                                                aria-valuenow="<?php echo $ExpLast; ?>" aria-valuemin="0" aria-valuemax="7">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                                    style="width: <?php echo (((int) $ExpLast) * 100 / 7); ?>%"><?php echo $ExpLast; ?> / 7
+                                                    jours</div>
+                                            </div>
+
+
+                                            <div>
+                                            </div>
+                                            <?php
+                                }
+                                ;
+                                ?>
                                     </div>
-                                    <?php
-                                    };
-                                    ?>
                                 </div>
                             </div>
                         </div>
-                    </div>
-            <?php
+                        <?php
+            }
         }
-        }}
+    }
     public static function getAuctionSimple()
     {
         $dbh = Database::createDBConnection();
         $query = $dbh->prepare("SELECT `id`,`obj_model`,`obj_date`,`obj_brand`,`obj_img`,`obj_year`,`obj_price` FROM `object` ");
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($result as $row) { 
-         $now = new \DateTime("now");
-            $expiredAsTimestamp  = strtotime($row['obj_date'].' + 7 days');
-            $expired = date('Y-m-d', $expiredAsTimestamp) ;
+        foreach ($result as $row) {
+            $now = new \DateTime("now");
+            $expiredAsTimestamp = strtotime($row['obj_date'] . ' + 7 days');
+            $expired = date('Y-m-d', $expiredAsTimestamp);
             $nownow = $now->format('Ymd');
             $expired2 = date('Ymd', $expiredAsTimestamp);
-            $ExpLast =intval($expired2) - intval($nownow);
-            if ($now->format('Y-m-d') <= $expired ){?>
-            <div class="card m-3 colorWhite bg-dark border-linear shadow-lg" style="width: 16rem;">
-                <img src="<?php echo 'data:image/png;base64,' . base64_encode($row['obj_img']); ?>" class=" imgcard card-img-top "
-                    alt="...">
-                <div class="card-body d-flex flex-column align-items-center">
-                    <h5 class="card-title">
-                        <?php echo $row['obj_brand']; ?>
-                        <?php echo $row['obj_model']; ?>
-                    </h5>
-                    <p class="card-text">Année:
-                        <?php echo $row['obj_year']; ?>
-                    </p>
-                    <p class="card-text">Expire dans
-                        <?php echo $ExpLast; ?> jours
-                    </p> 
-                    <p class="card-text">Prix de
-                        <?php echo $row['obj_price']; ?> €
-                    </p>
-                    <a href="auctiondetails.php?auctionid=<?php echo $row['id']; ?>" class="btn btn-outline-primary">Détails</a>
-                </div>
-            </div>
-        <?php }}
+            $ExpLast = intval($expired2) - intval($nownow);
+            if ($now->format('Y-m-d') <= $expired) { ?>
+                        <div class="card m-3 colorWhite bg-dark border-linear shadow-lg" style="width: 16rem;">
+                            <img src="<?php echo 'data:image/png;base64,' . base64_encode($row['obj_img']); ?>"
+                                class=" imgcard card-img-top " alt="...">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <h5 class="card-title">
+                                    <?php echo $row['obj_brand']; ?>
+                                    <?php echo $row['obj_model']; ?>
+                                </h5>
+                                <p class="card-text">Année:
+                                    <?php echo $row['obj_year']; ?>
+                                </p>
+                                <p class="card-text">Expire dans
+                                    <?php echo $ExpLast; ?> jours
+                                </p>
+                                <p class="card-text">Prix de
+                                    <?php echo $row['obj_price']; ?> €
+                                </p>
+                                <a href="auctiondetails.php?auctionid=<?php echo $row['id']; ?>"
+                                    class="btn btn-outline-primary">Détails</a>
+                            </div>
+                        </div>
+                    <?php }
+        }
     }
     public static function getAuctionExpired()
     {
@@ -157,29 +176,30 @@ class AuctionDetails extends Auction
         $query = $dbh->prepare("SELECT `id`,`obj_model`,`obj_date`,`obj_brand`,`obj_img`,`obj_year`,`obj_price` FROM `object` ");
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($result as $row) { 
-         $now = new \DateTime("now");
-            $expiredAsTimestamp  = strtotime($row['obj_date'].' + 7 days');
-            $expired = date('Y-m-d', $expiredAsTimestamp) ;
-            if ($now->format('Y-m-d') >= $expired ){?>
-            <div class="card m-3 colorWhite bg-dark h-60 border-linear shadow-lg" style="width: 16rem;">
-                <img src="<?php echo 'data:image/png;base64,' . base64_encode($row['obj_img']); ?>" class=" imgcard card-img-top "
-                    alt="...">
-                <div class="card-body d-flex flex-column align-items-center">
-                    <h5 class="card-title">
-                        <?php echo $row['obj_brand']; ?>
-                        <?php echo $row['obj_model']; ?>
-                    </h5>
-                    <p class="card-text">Année:
-                        <?php echo $row['obj_year']; ?>
-                    </p>                   
-                    <a  class="btn btn-outline-primary" disabled>TROP TARD!</a>
-                    <p class="card-text">Expiré le:
-                        <?php echo $expired; ?>
-                    </p> 
-                </div>
-            </div>
-        <?php }}
+        foreach ($result as $row) {
+            $now = new \DateTime("now");
+            $expiredAsTimestamp = strtotime($row['obj_date'] . ' + 7 days');
+            $expired = date('Y-m-d', $expiredAsTimestamp);
+            if ($now->format('Y-m-d') >= $expired) { ?>
+                        <div class="card m-3 colorWhite bg-dark h-60 border-linear shadow-lg" style="width: 16rem;">
+                            <img src="<?php echo 'data:image/png;base64,' . base64_encode($row['obj_img']); ?>"
+                                class=" imgcard card-img-top " alt="...">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <h5 class="card-title">
+                                    <?php echo $row['obj_brand']; ?>
+                                    <?php echo $row['obj_model']; ?>
+                                </h5>
+                                <p class="card-text">Année:
+                                    <?php echo $row['obj_year']; ?>
+                                </p>
+                                <a class="btn btn-outline-primary" disabled>TROP TARD!</a>
+                                <p class="card-text">Expiré le:
+                                    <?php echo $expired; ?>
+                                </p>
+                            </div>
+                        </div>
+                    <?php }
+        }
     }
     public static function getAuctionUser($id)
     {
@@ -189,20 +209,21 @@ class AuctionDetails extends Auction
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             ?>
-            <div class="card m-3 colorWhite bg-dark border-linear details " style="width: 10rem; height: 250px ">
-                <img src="<?php echo 'data:image/jpg;base64,' . base64_encode($row['obj_img']); ?>" class="card-img-top imgcard2"
-                    alt="...">
-                <div class="card-body d-flex flex-column align-items-center ">
-                    <p class="card-text">
-                        <?php echo $row['obj_brand']; ?>
-                    </p>
-                    <p class="card-text">
-                        <?php echo $row['obj_model']; ?>
-                    </p>
-                    <a href="auctiondetails.php?auctionid=<?php echo $row['id']; ?>" class="btn btn-outline-primary">Détails</a>
-                </div>
-            </div>
-            <?php
+                    <div class="card m-3 colorWhite bg-dark border-linear details " style="width: 10rem; height: 250px ">
+                        <img src="<?php echo 'data:image/jpg;base64,' . base64_encode($row['obj_img']); ?>"
+                            class="card-img-top imgcard2" alt="...">
+                        <div class="card-body d-flex flex-column align-items-center ">
+                            <p class="card-text">
+                                <?php echo $row['obj_brand']; ?>
+                            </p>
+                            <p class="card-text">
+                                <?php echo $row['obj_model']; ?>
+                            </p>
+                            <a href="auctiondetails.php?auctionid=<?php echo $row['id']; ?>"
+                                class="btn btn-outline-primary">Détails</a>
+                        </div>
+                    </div>
+                    <?php
         }
     }
 
