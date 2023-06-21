@@ -94,7 +94,7 @@ class User //extends UserLogIn
 
             <div class=user>
                 <div>
-                    <img class="menuPicture"
+                    <img class="profilePicture"
                         src=" <?php echo 'data:image/jpg;base64,' . base64_encode($userInfo['user_img']) ?>" />
                 </div>
                 <div class=username>
