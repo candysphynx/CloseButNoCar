@@ -21,14 +21,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
     <?php
   } else {
-    $newUser = new User(
-      $_POST["username"],
-      $_POST["user_age"],
-      $_POST["user_email"],
-      $_POST["user_pdw"],
-      file_get_contents($_FILES['image']['tmp_name'])
-    );
-    $newUser->set();
+      $newUser = new User(
+        $_POST["username"],
+        $_POST["user_age"],
+        $_POST["user_email"],
+        $_POST["user_pdw"],
+        file_get_contents($_FILES['image']['tmp_name'])
+      );
+      $newUser->set();
+      header('Location: authentication.php');
+      exit();
 
   }
 }
