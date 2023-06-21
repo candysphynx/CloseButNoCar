@@ -12,17 +12,13 @@ use PDO;
 class User //extends UserLogIn 
 {
 
-    public $id;
-
-    public $username;
-
-    public $user_age;
-
-    public $user_email;
-    public $user_pdw;
-    public $user_img;
-
-    public $result; // Résultat du stockage des informations du formulaire
+    protected $id;
+    protected $username;
+    protected $user_age;
+    protected $user_email;
+    protected $user_pdw;
+    protected $user_img;
+    protected $result; // Résultat du stockage des informations du formulaire
 
     public function __construct($username, $user_age, $user_email, $user_pdw, $user_img)
     {
@@ -33,6 +29,65 @@ class User //extends UserLogIn
         $this->user_pdw = $user_pdw;
         $this->user_img = $user_img;
 
+    }
+    public function setId()
+    {
+        $this->id;
+    }
+    public function getId()
+    {
+        return
+            $this->id;
+    }
+
+    public function setUsername()
+    {
+        $this->username;
+    }
+    public function getUsername()
+    {
+        return
+            $this->username;
+    }
+
+    public function setUser_age()
+    {
+        $this->user_age;
+    }
+    public function getUser_age()
+    {
+        return
+            $this->user_age;
+    }
+
+    public function setUser_email()
+    {
+        $this->user_email;
+    }
+    public function getUser_email()
+    {
+        return
+            $this->user_email;
+    }
+
+    public function setUser_pdw()
+    {
+        $this->user_pdw;
+    }
+    public function getUser_pdw()
+    {
+        return
+            $this->user_pdw;
+    }
+
+    public function setUser_img()
+    {
+        $this->user_img;
+    }
+    public function getUser_img()
+    {
+        return
+            $this->user_img;
     }
 
     public function set()
@@ -56,8 +111,8 @@ class User //extends UserLogIn
         $query = $dbh->prepare("UPDATE `user` SET `username` = ?,`user_age` = ?, `user_email` = ?, `user_pdw` = ?, `user_img` = ? WHERE `user`.`id` = $id");
 
         $query->execute([$this->username, $this->user_age, $this->user_email, $this->user_pdw, $this->user_img,]);
-        setValue('user_img',$this->user_img);
-        setValue('username',$this->username);
+        setValue('user_img', $this->user_img);
+        setValue('username', $this->username);
     }
 
     public function LoggedUser()

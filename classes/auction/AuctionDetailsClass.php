@@ -10,12 +10,12 @@ use bids\Bids as BidsBids;
 
 class AuctionDetails extends Auction
 {
-    public $obj_year;
-    public $obj_price;
-    public $obj_descr;
-    public $obj_date;
-    public $last_user_auction;
-    public $auction_price;
+    protected $obj_year;
+    protected $obj_price;
+    protected $obj_descr;
+    protected $obj_date;
+    protected $last_user_auction;
+    protected $auction_price;
 
     public function __construct($obj_model, $obj_brand, $obj_img, $obj_year, $obj_price, $obj_descr, $obj_date)
     {
@@ -34,11 +34,44 @@ class AuctionDetails extends Auction
         $query->execute([$_SESSION['user_id'], $this->obj_model, $this->obj_brand, $this->obj_img, $this->obj_year, $this->obj_price, $this->obj_descr, $this->obj_date,]);
     }
 
-    public function __get($property)
+    public function setObj_year()
     {
-        if ($property !== "dbh") {
-            return $this->$property;
-        }
+        $this->obj_year;
+    }
+    public function getObj_year()
+    {
+        return
+            $this->obj_year;
+    }
+
+    public function setObj_price()
+    {
+        $this->obj_price;
+    }
+    public function getObj_price()
+    {
+        return
+            $this->obj_price;
+    }
+
+    public function setObj_descr()
+    {
+        $this->obj_descr;
+    }
+    public function getObj_descr()
+    {
+        return
+            $this->obj_descr;
+    }
+
+    public function setObj_date()
+    {
+        $this->obj_date;
+    }
+    public function getObj_date()
+    {
+        return
+            $this->obj_date;
     }
 
     public static function getAuctionDetails($id)
@@ -93,7 +126,8 @@ class AuctionDetails extends Auction
                                     ?>
                                     <div class="row">
                                         <div class="card-body">
-                                            <p class="activeGradient d-flex justify-content-center">Nous vous proposons d'enchérir sur ce sublime Véhicule! </p>
+                                            <p class="activeGradient d-flex justify-content-center">Nous vous proposons d'enchérir sur ce
+                                                sublime Véhicule! </p>
                                             <form action="../page/contributeauction.php" method="POST">
                                                 <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>" />
                                                 <input type="hidden" name="object_id" value="<?php echo $id; ?>" />
@@ -214,22 +248,22 @@ class AuctionDetails extends Auction
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             ?>
-                    <div class="card m-3 colorWhite bg-dark border-linear details " style="width: 10rem; height:300px ">
-                        <img src="<?php echo 'data:image/jpg;base64,' . base64_encode($row['obj_img']); ?>"
-                            class="card-img-top imgcard2" alt="...">
-                        <div class="card-body d-flex flex-column align-items-center ">
-                            <p class="card-text">
-                                <?php echo $row['obj_brand']; ?>
-                            </p>
-                            <p class="card-text">
-                                <?php echo $row['obj_model']; ?>
-                            </p>
-                            <a href="auctiondetails.php?auctionid=<?php echo $row['id']; ?>"
-                                class="btn btn-outline-primary">Détails</a>
-                                <a href="" class="btn btn-outline-danger">Supprimer</a>
-                        </div>
-                    </div>
-                    <?php
+            <div class="card m-3 colorWhite bg-dark border-linear details " style="width: 10rem; height:300px ">
+                <img src="<?php echo 'data:image/jpg;base64,' . base64_encode($row['obj_img']); ?>"
+                class="card-img-top imgcard2" alt="...">
+            <div class="card-body d-flex flex-column align-items-center ">
+                <p class="card-text">
+                    <?php echo $row['obj_brand']; ?>
+                </p>
+                <p class="card-text">
+                    <?php echo $row['obj_model']; ?>
+                </p>
+                <a href="auctiondetails.php?auctionid=<?php echo $row['id']; ?>"
+                    class="btn btn-outline-primary">Détails</a>
+                <a href="" class="btn btn-outline-danger">Supprimer</a>
+            </div>
+        </div>
+        <?php
         }
     }
 

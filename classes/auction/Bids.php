@@ -10,12 +10,12 @@ use PDO;
 
 class Bids
 {
-    public $id;
-    public $user_id;
-    public $object_id;
-    public $auction_date;
-    public $auction_price;
-    public $past_bids_id;
+    protected $id;
+    protected $user_id;
+    protected $object_id;
+    protected $auction_date;
+    protected $auction_price;
+    protected $past_bids_id;
 
 
     public function __construct($user_id, $object_id, $auction_date, $auction_price)
@@ -24,6 +24,56 @@ class Bids
         $this->object_id = $object_id;
         $this->auction_date = $auction_date;
         $this->auction_price = $auction_price;
+    }
+
+    public function setId()
+    {
+        $this->id;
+    }
+    public function getId()
+    {
+        return
+            $this->id;
+    }
+
+    public function setUser_id()
+    {
+        $this->user_id;
+    }
+    public function getUser_id()
+    {
+        return
+            $this->user_id;
+    }
+
+    public function setObject_id()
+    {
+        $this->object_id;
+    }
+    public function getObject_id()
+    {
+        return
+            $this->object_id;
+    }
+
+    public function setAuction_date()
+    {
+        $this->auction_date;
+    }
+    public function getAuction_date()
+    {
+        return
+            $this->auction_date;
+    }
+
+    public function setAuction_price()
+    {
+        $this->auction_price;
+    }
+    public function getAuction_price()
+    {
+        return
+            $this->auction_price;
     }
 
     public function setBids()
@@ -88,40 +138,40 @@ class Bids
                 <div>
                     <img class="profilePicture"
                         src=" <?php echo 'data:image/jpg;base64,' . base64_encode($userContrib['user_img']) ?>" />
-                </div>
-                <div class=username>
-                    <h2 class=hUsername><?php echo $userContrib['username']; ?></h2>
-                </div>
-                <div class="userInfo">
-                    <p>Montant de la dernière enchère :
-                        <?php echo $userContrib['auction_price']; ?>
-                    </p>
-
-                    <<<<<<< HEAD <p>Dernière enchère sur :
-                        <?php echo $userContrib['obj_model']; ?>
-                        </p>
-                        <p>Date de la dernière enchère:
-                            <?php echo $userContrib['auction_date']; ?>
-                        </p>
-                </div>
             </div>
-            =======
-            <li class="colorWhite border-btm-linear">
-                <span>Le : <strong class="colorYellow">
-                        <?php echo $userContrib['auction_date']; ?>
-                    </strong> </span>
-                <span>vous avez enchéri sur : <strong class="colorYellow">
-                        <?php echo $userContrib['obj_brand']; ?>
-                        <?php echo $userContrib['obj_model']; ?>
-                    </strong>, </span>
-                <span> votre enchère est de : <strong class="colorYellow">
-                        <?php echo $userContrib['auction_price']; ?>
-                    </strong> €</span>
-                <span> <a href="./../page/auctiondetails.php?auctionid=<?php echo $userContrib['id']; ?>"
-                        class="myButton">Voir</a></span>
-            </li>
-            >>>>>>> jimmy
-            <?php
+            <div class=username>
+                <h2 class=hUsername><?php echo $userContrib['username']; ?></h2>
+            </div>
+            <div class="userInfo">
+                <p>Montant de la dernière enchère :
+            <?php echo $userContrib['auction_price']; ?>
+            </p>
+
+            <<<<<<< HEAD <p>Dernière enchère sur :
+            <?php echo $userContrib['obj_model']; ?>
+            </p>
+            <p>Date de la dernière enchère:
+                <?php echo $userContrib['auction_date']; ?>
+            </p>
+    </div>
+</div>
+=======
+<li class="colorWhite border-btm-linear">
+    <span>Le : <strong class="colorYellow">
+            <?php echo $userContrib['auction_date']; ?>
+            </strong> </span>
+        <span>vous avez enchéri sur : <strong class="colorYellow">
+            <?php echo $userContrib['obj_brand']; ?>
+            <?php echo $userContrib['obj_model']; ?>
+            </strong>, </span>
+        <span> votre enchère est de : <strong class="colorYellow">
+            <?php echo $userContrib['auction_price']; ?>
+            </strong> €</span>
+        <span> <a href="./../page/auctiondetails.php?auctionid=<?php echo $userContrib['id']; ?>"
+            class="myButton">Voir</a></span>
+</li>
+>>>>>>> jimmy
+<?php
         }
     }
 }
