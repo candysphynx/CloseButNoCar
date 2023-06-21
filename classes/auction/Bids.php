@@ -59,4 +59,23 @@ class Bids {
                 <?php }
             else { }}                
     }
+    public static function displayContribution($id)
+    {
+        $dbh = Database::createDBConnection();
+        $query = $dbh->prepare("SELECT b.user_id, u.username, u.user_img, b.auction_price, b.auction_date, o.obj_model FROM `bids` b, `user` u, `object` o WHERE b.user_id = ? AND b.user_id = u.id AND o.id = b.object_id;;");
+         $query->execute([$id]);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($result as $userContrib) {  ?>
+        
+
+            <li class="colorWhite border-linear">
+                    <span>enchère : <?php echo $userContrib['auction_price']; ?></span>
+                    <span>enchère sur : <?php echo $userContrib['obj_model']; ?></span>
+                    <span>Date de l'enchère: <?php echo $userContrib['auction_date']; ?></span>
+
+            </li>
+            <?php
+        }
+    }
 }

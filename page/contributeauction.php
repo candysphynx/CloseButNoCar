@@ -61,8 +61,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <p class="d-flex colorWhite raleway400 fs40 justify-content-center"><?php echo $_SESSION['username'];?>, voici vos Contributions : </p>
           </div>
           <div class="row ">
-
-
+            <ul>
+            <?php
+              Bids::displayContribution($_SESSION['user_id']);
+            ?>
+            </ul>
           </div>
           <div class="row justify-content-center ">
             <div class="col-auto">
