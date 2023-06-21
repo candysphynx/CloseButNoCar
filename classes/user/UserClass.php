@@ -57,6 +57,7 @@ class User //extends UserLogIn
 
         $query->execute([$this->username, $this->user_age, $this->user_email, $this->user_pdw, $this->user_img,]);
         setValue('user_img',$this->user_img);
+        setValue('username',$this->username);
     }
 
     public function LoggedUser()

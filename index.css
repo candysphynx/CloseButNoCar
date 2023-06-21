@@ -104,8 +104,9 @@ body {
     border-radius: 50px;
     height: 100px;
     width: 100px;
-    border: #382d2a 1px solid;
     margin: 10px;
+    padding: 1px 1px 1px 1px;
+    border:2px solid white
 }
 
 .detailsimg {
