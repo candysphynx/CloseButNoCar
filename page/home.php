@@ -39,11 +39,7 @@ use auction\AuctionDetails;
 
     <!-- Body de l'index -->
     <div class="row">
-      <!-- Colonne de gauche -->
-      <div class="col-2">
-      </div>
-      <!-- Colonne de droite -->
-      <div class="col-10">
+      <div class="col-12">
         <div class="row placeholder-lg"></div>
         <div class="row">
           <p class="colorWhite d-flex justify-content-center">Enchères Actives</p>
