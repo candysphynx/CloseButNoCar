@@ -1,0 +1,363 @@
+.bkgBrown {
+    background-color: #382d2a;
+}
+
+body {
+    background-color: #382d2a;
+}
+
+.bkgImg {
+    height: 100vh;
+    background-image: url("public/logoT.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.colorWhite {
+    color: white;
+}
+
+.colorRed {
+    color: red;
+}
+.colorYellow{
+    color:#f8c270;
+}
+
+.activeGradient {
+    background: -webkit-linear-gradient(45deg, #ff656e, #f8c270);
+    -webkit-background-clip: text;
+    font-size: 16px;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: start;
+    padding: 1%;
+    box-sizing: border-box;
+    margin-top: 0;
+    padding-left: 0;
+    background-color: #f8c27033;
+    border-radius: 4px;
+}
+
+.username {
+    display: flex;
+    flex-direction: column;
+}
+
+.hUsername {
+    color: white;
+    font-size: large;
+    text-align: left;
+    text-justify: center;
+    margin: 2%;
+}
+
+.btnEdit {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    height: 10vh;
+}
+
+.btn-outline-primary {
+    display: flex;
+    height: 6vh;
+    width: 10vw;
+    background-image: linear-gradient(to right, #ff656e 0%, #FFEDBC 51%, #f8c270 100%);
+    padding: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 4px;
+    display: block;
+    border: none;
+    margin: 10px;
+}
+
+.btn-outline-primary:hover {
+    background-position: right center;
+    color: #382d2a;
+    text-decoration: none;
+    transition: 0.5s;
+    font-weight: 700;
+}
+
+.userInfo {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: space-evenly;
+    border-left: 1px solid white;
+    padding: 2%;
+    margin: 2%;
+}
+
+.profilePicture {
+    border-radius: 50px;
+    height: 100px;
+    width: 100px;
+    border: #382d2a 1px solid;
+    margin: 10px;
+}
+
+.detailsimg {
+    width: 400px;
+    height: 300px;
+    margin: 5px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-image: url("../CloseButNoCar/public/rolls.jpeg");
+}
+
+.detailsinfos {
+    width: 400px;
+    height: 300px;
+    margin: 5px;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.description {
+    height: 400px;
+    margin: 2px;
+    box-sizing: border-box;
+    color: white;
+}
+
+/*Polices Raleway*/
+
+.ralewayT100 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+}
+
+.raleway300 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+}
+
+.raleway400 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+}
+
+.ralewayB700 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-weight: 700;
+}
+
+.ralewayB900 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-weight: 900;
+}
+
+/*Polices Sizes*/
+
+.fs20 {
+    font-size: 20px;
+}
+
+.fs40 {
+    font-size: 40px;
+}
+
+.fs50 {
+    font-size: 50px;
+}
+
+.fs60 {
+    font-size: 60px;
+}
+
+.h-80 {
+    height: 80%;
+}
+
+.h-60 {
+    height: 60%;
+}
+
+.border-linear {
+    background: radial-gradient(circle at 100% 100%, #262323 0, #262323 1px, transparent 1px) 0% 0%/4px 4px no-repeat,
+        radial-gradient(circle at 0 100%, #262323 0, #262323 1px, transparent 1px) 100% 0%/4px 4px no-repeat,
+        radial-gradient(circle at 100% 0, #262323 0, #262323 1px, transparent 1px) 0% 100%/4px 4px no-repeat,
+        radial-gradient(circle at 0 0, #262323 0, #262323 1px, transparent 1px) 100% 100%/4px 4px no-repeat,
+        linear-gradient(#262323, #262323) 50% 50%/calc(100% - 6px) calc(100% - 8px) no-repeat,
+        linear-gradient(#262323, #262323) 50% 50%/calc(100% - 8px) calc(100% - 6px) no-repeat,
+        linear-gradient(346deg, rgba(251, 232, 40, 1) 0%, #dd484d 100%);
+    border-radius: 4px;
+    padding: 12px;
+    box-sizing: content-box;
+}
+.border-btm-linear{
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom: 2px solid rgba(221,72,77,1);
+}
+
+.imgAuction {
+    width: 500px;
+    height: 300px;
+}
+
+.imgcard {
+    min-height: 150px;
+}
+
+.imgcard2 {
+    min-height: 103px;
+}
+
+#createauction {
+    display: none;
+}
+
+#btnClick2 {
+    display: none;
+}
+
+#ourauction {
+    display: flex;
+}
+
+#modify_user {
+    display: none;
+}
+
+.noBack {
+    color: white;
+    background-color: #26232300;
+    border: 0px;
+}
+
+.noBack {
+    color: white;
+    background-color: #26232300;
+    border: 0px;
+}
+
+.btnValidCont {
+    display: flex;
+    height: 6vh;
+    width: 10vw;
+    background-image: linear-gradient(to right, #ff656e 0%, #FFEDBC 51%, #f8c270 100%);
+    padding: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 4px;
+    display: block;
+    border: none;
+    margin: 10px;
+}
+
+.btnValidCont:hover {
+    background-position: right center;
+    color: #382d2a;
+    text-decoration: none;
+    transition: 0.5s;
+    font-weight: 700;
+}
+
+.btnValidLog {
+    display: flex;
+    height: 6vh;
+    width: 10vw;
+    background-image: linear-gradient(to right, #ff656e 0%, #FFEDBC 51%, #f8c270 100%);
+    padding: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 4px;
+    display: block;
+    border: none;
+    margin: 10px;
+}
+
+.btnValidLog:hover {
+    background-position: right center;
+    color: #382d2a;
+    text-decoration: none;
+    transition: 0.5s;
+    font-weight: 700;
+}
+
+.btnValidReg {
+    display: flex;
+    height: 6vh;
+    width: 10vw;
+    background-image: linear-gradient(to right, #ff656e 0%, #FFEDBC 51%, #f8c270 100%);
+    padding: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 4px;
+    display: block;
+    border: none;
+    margin: 10px;
+}
+
+.btnValidReg:hover {
+    background-position: right center;
+    color: #382d2a;
+    text-decoration: none;
+    transition: 0.5s;
+    font-weight: 700;
+}
+
+.btnValidAuct {
+    display: flex;
+    height: 6vh;
+    width: 10vw;
+    background-image: linear-gradient(to right, #ff656e 0%, #FFEDBC 51%, #f8c270 100%);
+    padding: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 4px;
+    display: block;
+    border: none;
+    margin: 10px;
+}
+
+.btnValidAuct:hover {
+    background-position: right center;
+    color: #382d2a;
+    text-decoration: none;
+    transition: 0.5s;
+    font-weight: 700;
+}
+
+.menuPicture{
+    height: 40px;
+    width: 40px;
+    border-radius: 48px;
+    padding: 1px 1px 1px 1px;
+    border:2px solid white
+
+}
