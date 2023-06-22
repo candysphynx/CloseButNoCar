@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Determine le chemin d'accès par rapport aux dossiers du localhost
+RewriteCond %{REQUEST_URI} ^(.*)/
+RewriteRule ^ - [E=BASE_PATH:%1]
+
+
+ErrorDocument 404 /%{ENV:BASE_PATH}/404.php
