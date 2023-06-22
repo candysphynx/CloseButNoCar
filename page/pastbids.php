@@ -39,14 +39,11 @@ use auction\AuctionDetails;
 
     <!-- Body de l'index -->
     <div class="row">
-      <!-- Colonne de gauche -->
-      <div class="col-2">
-      </div>
-      <!-- Colonne de droite -->
-      <div class="col-10">
+      
+      <div class="col">
         <div class="row placeholder-lg"></div>
         <div class="row">
-          <p class="colorWhite d-flex justify-content-center">Enchères Expirées</p>
+          <p class="colorWhite d-flex justify-content-center activeGradient fs40">Enchères Expirées</p>
         </div>
         <!-- Content Cards -->
         <div class="bkgImg row">

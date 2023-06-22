@@ -42,7 +42,7 @@ use auction\AuctionDetails;
       <div class="col-12">
         <div class="row placeholder-lg"></div>
         <div class="row">
-          <p class="colorWhite d-flex justify-content-center">Enchères Actives</p>
+          <p class="colorWhite d-flex justify-content-center activeGradient fs40">Enchères Actives</p>
         </div>
         <!-- Content Cards -->
         <div class="bkgImg row justify-content-center">
